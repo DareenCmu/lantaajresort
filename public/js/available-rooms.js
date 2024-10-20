@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function fetchAvailableRooms(checkin, checkout,adults,childs) {
     // Pass checkin and checkout as query parameters in the fetch request
-    fetch(`http://127.0.0.1:4000/available-rooms?checkin=${checkin}&checkout=${checkout}&adults=${adults}&childs=${childs}`)
+    fetch(`https://lantaajresort.onrender.com/available-rooms?checkin=${checkin}&checkout=${checkout}&adults=${adults}&childs=${childs}`)
     .then(response => response.json())
     .then(data => {
         console.log('Fetched Data:', data);  // Debugging line

@@ -92,7 +92,7 @@ function fetchAvailableRooms(checkin, checkout,adults,childs) {
     })
     .catch(error => {
         console.error('Error fetching rooms:', error);
-        document.getElementById('room-list').innerHTML = '<p>Failed to load availablesss rooms. Please try again later.</p>';
+        document.getElementById('room-list').innerHTML = '<p>Failed to load available rooms. Please try again later.</p>';
     });
 }
 

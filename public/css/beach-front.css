@@ -1,0 +1,172 @@
+#beachfront-room-section {
+    padding: 50px 0;
+    background-color: #fff;
+}
+
+.container-beachfront-room {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-beachfront-room {
+  
+    max-width: 390px;
+    text-align: left;
+    margin-left: 180px;
+}
+
+.text-beachfront-room h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.text-beachfront-room p {
+    font-size: 1rem;
+    color: #555;
+    
+}
+
+.highlight-text-beachfront-room {
+    color: #e79806;
+    font-size: 20px;
+}
+
+/* Beachfront Slideshow container */
+.beachfront-slideshow-container {
+    flex: 2;
+    max-width: 50%;
+    position: relative;
+    margin-left: 180px;
+    overflow: hidden;
+}
+
+.beachfrontSlide {
+    display: none;
+}
+
+.beachfrontSlide img {
+    width: 800px;
+    height: 500px;
+    border-radius: 10px;
+}
+/* Right Slideshow container */
+.right-slideshow-container2 {
+    flex: 2;
+
+    position: relative;
+    margin-left: 180px;
+   
+}
+
+.rightSlide2 {
+    display: none;
+}
+
+.rightSlide2 img {
+    width: 100%; /* Let the image take the full width of its container */
+    height: auto; /* Maintain the aspect ratio */
+    max-width: 1200px; /* Increase the maximum width of the image */
+}
+
+.prev-beachfront, .next-beachfront {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next-beachfront {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev-beachfront:hover, .next-beachfront:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+    .container-beachfront-room {
+        flex-direction: column;
+        align-items: center;
+     
+    }
+
+
+    .text-beachfront-room{
+        max-width: 100%;
+        text-align: left;
+        margin: 20px 20px;
+    }
+
+    .right-slideshow-container2 {
+
+        margin: 0 auto; /* Center the slideshow */
+        width: 100%; /* Allow the image to take up the full width of the container */
+
+    }
+
+    .rightSlide2 img {
+
+        width: 100%; /* Ensure the image still scales down appropriately */
+        height: auto; /* Maintain aspect ratio */
+        max-width: none; /* Let the image expand without a max-width */
+
+    }
+
+
+
+
+    
+
+    
+}
+@media (max-width: 480px) {
+    .text-beachfront-room h2 {
+        font-size: 1.5rem;
+    }
+
+    .text-beachfront-room p {
+        font-size: 0.9rem;
+    }
+
+
+
+    .right-slideshow-container2 {
+        width: 100%;
+        margin-right: 180px;
+        
+        
+    }
+
+
+}
+@media (max-width: 280px) {
+
+    .right-slideshow-container2 {
+        width: 100%;
+        margin-right: 180px; /* Keep things centered */
+        
+        
+    }
+    .rightSlide2 img {
+
+       height: auto; /* Let the image adjust to screen size */
+
+    }
+    .next-beachfront  {
+        right: -10px; /* Further adjust navigation arrow */
+
+        
+    }
+}

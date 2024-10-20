@@ -1,0 +1,153 @@
+/* Style for the map container */
+#map {
+    width: 100%;
+    height: 500px; /* Adjust the height as needed */
+}
+
+ /* Style for the information bar */
+ .info-bar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #C3E5EE; /* Light grey background */
+    padding: 1px 0 13px; /* Padding for spacing */
+    font-family: Arial, sans-serif; /* Font style */
+}
+
+.info-bar .info-item {
+    text-align: center; /* Center align text */
+}
+.info-bar .info-item:not(:last-child)::after {
+    content: ''; /* Empty content for the pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 84%;   
+    padding-left: 180px;
+    
+    height: 10%; /* Adjust the height of the vertical line */
+    border-right: 3px solid #0b0909; /* Color and thickness of the line */
+}
+
+.info-bar .info-item h4 {
+    color: #7fa014; /* Custom green color */
+    margin-bottom: 10px; /* Margin below heading */
+}
+
+.info-bar .info-item p {
+    margin: 0; /* Remove margin from paragraph */
+    color: #333; /* Dark text color */
+}
+
+        /* Image Section */
+.image-left {
+    display: flex;
+    margin-top: 20px; /* Space above the image section */
+    margin-bottom: 20px;
+}
+
+.image-left img {
+    width: 100%; /* Adjust the width of the image */
+    max-width: 500px; /* Max width to prevent image from getting too large */
+    margin-right: 10px; /* Margin to create space between the image and content */
+}
+
+.info-section {
+    display: flex; /* Flexbox to arrange items side-by-side */
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+    padding: 40px; /* Add more padding for better spacing */
+    gap: 40px; /* Increase the gap between image and form */
+    max-width: 1200px; /* Set a max-width for the whole section */
+    margin: 0 auto; /* Center the entire section in the middle of the page */
+}
+
+.info-image {
+    flex: 1; /* Allow image to take half of the available space */
+    max-width: 45%; /* Limit the image width */
+}
+
+.info-image img {
+    width: 100%; /* Image takes full width of its container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Add some border radius */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for a 3D effect */
+}
+
+.submission-form {
+    flex: 1; /* Allow form to take half of the available space */
+    max-width: 45%; /* Limit the form width */
+    padding: 30px; /* Add padding inside the form */
+    background-color: #f5f5f5; /* Background color for form */
+    border-radius: 8px; /* Add some border radius */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for a 3D effect */
+}
+
+.submission-form h3 {
+    margin-bottom: 15px;
+    text-align: center; /* Center the heading */
+}
+
+.submission-form label {
+    display: block; /* Label takes full width */
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.submission-form input,
+.submission-form textarea {
+    width: 100%; /* Input and textarea take full width */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.submission-form button {
+    padding: 10px 20px;
+    background-color: #e69500; /* Button background color */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    display: block; /* Make button take full width */
+    margin: 0 auto; /* Center the button */
+}
+
+.submission-form button:hover {
+    background-color: #cc8400; /* Hover effect for button */
+}
+
+
+
+/* Make the info-bar responsive */
+@media (max-width: 768px) {
+    .info-bar {
+        flex-direction: column; /* Stack items on smaller screens */
+        padding: 10px; /* Reduce padding */
+    }
+        /* Remove vertical lines between info items on smaller screens */
+    .info-bar .info-item:not(:last-child)::after {
+        content: none; /* Remove the line */
+    }
+
+    .image-left {
+        flex-direction: column; /* Stack the image and content vertically */
+        align-items: center; /* Center align content */
+        text-align: center; /* Center text */
+    }
+
+    .image-left img {
+        margin-right: 0; /* Remove right margin on smaller screens */
+        margin-bottom: 20px; /* Add margin below the image */
+        width: 80%; /* Make image smaller */
+    }
+    .info-section {
+        flex-direction: column; /* Stack the form and image vertically */
+        align-items: center; /* Center align items */
+    }
+
+    .info-image, .submission-form {
+        max-width: 100%; /* Full width for both on small screens */
+    }
+}

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/rooms.css">
+    <link rel="stylesheet" href="css/beach-front.css">
+    <link rel="stylesheet" href="css/dining.css">
+
+    
+    <link rel="stylesheet" href="css/menu.css">
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick-theme.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <a href="/index.html"><img src="/pictures/logo.png" alt="Hotel Logo" class="logo"></a>
+                <div class="vertical-line"></div>
+                <span class="resort-name">Lanta A&J Klong-khong Beach</span>
+            </div>
+            <nav id="covered">
+                <ul class="main-nav">
+                    <li><a href="/rooms.html">Rooms</a></li>
+                    <li><a href="/activities.html">Activities</a></li>
+                    <li><a href="/menu.html">Restuarant Menu</a></li>
+                    <li><a href="/contact.html">Contact Us</a></li>
+                </ul>
+
+            </nav>
+                <div class="book-now">
+                    <a href="#book-now" class="book-now-btn">Book Now</a>
+                </div>
+                <div class="hamburger-menu" id="hamburgerMenu">
+                    <!-- Hamburger Icon -->
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+        </div>
+     
+    </header>
+    <div class="side-menu" id="sideMenu">
+        <button class="close-btn" id="closeBtn">&times;</button>
+        <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/rooms.html">Rooms</a></li>
+            <li><a href="/activities.html">Activities</a></li>
+            <li><a href="/menu.html">Restuarant Menu</a></li>
+            <li><a href="/contact.html">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <section id="slideshow">
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img src="/pictures/2.jpg" style="width:100%">
+            </div>
+            <div class="mySlides fade">
+                <img src="/pictures/4.jpg" style="width:100%">
+            </div>
+            <div class="mySlides fade">
+                <img src="/pictures/3.jpg" style="width:100%">
+            </div>
+            <div class="mySlides fade">
+                <img src="/pictures/breakfast.jpg" style="width:100%">
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <br>
+
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span> 
+            <span class="dot" onclick="currentSlide(2)"></span> 
+            <span class="dot" onclick="currentSlide(3)"></span> 
+            <span class="dot" onclick="currentSlide(4)"></span> 
+        </div>
+    </section>
+    
+    <div class="booking-under-slideshow">
+        <form class="booking-form">
+            <div class="input-group">
+                <label for="checkin">Check-in</label>
+                <input type="date" id="checkin" class="booking-input" value="">
+            </div>
+            <div class="input-group">
+                <label for="checkout">Check-out</label>
+                <input type="date" id="checkout" class="booking-input" value="">
+            </div>
+            <div class="input-group dropdown-toggle">
+                <label for="guests">Rooms and Guests</label>
+                <div id="guests" class="booking-input">
+                    <span id="guest-summary">1 Room, 2 Adults, 0 Children</span>
+                    <div class="dropdown-arrow">&#9660;</div>
+                </div>
+                <div class="guest-options">
+                    <div class="rooms-option">
+                        <span>Rooms</span>
+                        <button type="button" id="room-minus">-</button>
+                        <input type="text" id="room-count" value="1" readonly>
+                        <button type="button" id="room-plus">+</button>
+                    </div>
+                    <div class="guest-option">
+                        <span>Adults</span>
+                        <button type="button" id="adult-minus">-</button>
+                        <input type="text" id="adult-count" value="2" readonly>
+                        <button type="button" id="adult-plus">+</button>
+                    </div>
+                    <div class="guest-option">
+                        <span>Children</span>
+                        <button type="button" id="child-minus">-</button>
+                        <input type="text" id="child-count" value="0" readonly>
+                        <button type="button" id="child-plus">+</button>
+                    </div>
+                    <button type="button" class="confirm-btn" onclick="confirmGuestSelection()">Confirm</button>
+                </div>
+            </div>
+            <div class="input-group">
+            <button type="button" class="check-availability-btn" id="check-availability-btn" onclick='window.location.href="/available-rooms.html"'>Check Availability</button>
+        </div>
+        </form>
+    </div>
+
+
+    <section id="menu-section">
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="/Food/picture/breakfastmain.jpg" alt="Breakfast">
+                <div class="menu-overlay">
+                    <span>BREAKFAST – 8:00AM TILL 11AM</span>
+                    <a href="/Food/breakfast.html"  class="menu-btn">View Menu</a>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="/Food/picture/appetizermain.jpg" alt="appetizer">
+                <div class="menu-overlay">
+                    <span>APPETIZER</span>
+                    <a href="/Food/appetizer.html" class="menu-btn">View Menu</a>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="/Food/picture/thaimain.jpg" alt="thai food">
+                <div class="menu-overlay">
+                    <span>THAI FOOD</span>
+                    <a href="/Food/thai.html" class="menu-btn">View Menu</a>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="/Food/picture/internationalmain.jpg" alt="International Food">
+                <div class="menu-overlay">
+                    <span>INTERNATIONAL FOOD</span>
+                    <a href="/Food/International.html" class="menu-btn">View Menu</a>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="/Food/picture/veggiesmain.jpg" alt="veggies food">
+                <div class="menu-overlay">
+                    <span>VEGGIES FOOD</span>
+                    <a href="/Food/veggies.html" class="menu-btn">View Menu</a>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="/Food/picture/drinkmain.jpg" alt="drinks">
+                <div class="menu-overlay">
+                    <span>DRINKS</span>
+                    <a href="/Food/drinks.html" class="menu-btn">View Menu</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+ 
+<footer>
+    <div class="footer-container">
+        <!-- Contact Us Section -->
+        <div class="footer-section contact-us">
+            <h4>Contact Us</h4>
+            <p>Email: opoonfamily@hotmail.com</p>
+            <p>Phone: +66 123 456 789</p>
+            <div class="footer-section-icons">
+                <a href="https://wa.me/1234567890" target="_blank">
+                    <i class="fab fa-whatsapp whatsapp-icon"></i>
+                </a>
+                <a href="https://m.me/username" target="_blank">
+                    <i class="fab fa-facebook-messenger messenger-icon"></i> 
+                </a>
+            </div>
+        </div>
+
+        <!-- Centered Logo Section -->
+        <div class="footer-section logo-section">
+
+            <h5>© 2015 Lanta A&J Klong Khong Beach </h5>
+        </div>
+
+        <!-- Connect Us Section -->
+        <div class="footer-section connect-us">
+            <h4>Connect Us</h4>
+            <a href="https://www.facebook.com/LantaAJbeachresort/">
+                <i class="fab fa-facebook-f facebook-icon"></i> Lanta A&J Resort
+            </a>
+            <a href="https://www.facebook.com/LantaAJbeachresort/">
+                <i class="fab fa-facebook-f facebook-icon"></i> Jeab's Dining
+            </a>
+        </div>
+    </div>
+</footer>
+    
+        <!-- Additional Sections can be added below as needed -->
+
+    <script src="js/script.js"></script>
+    <script src="js/booking.js"></script>
+    
+
+  
+    
+</body>
+</html>

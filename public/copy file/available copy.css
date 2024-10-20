@@ -1,0 +1,197 @@
+.room-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto; /* Ensures horizontal centering */
+    max-width: 1200px; /* Limits the width for larger screens */
+    padding: 0 20px; /* Adds some padding for smaller screens */
+    position: relative; /* Establishes a positioning context for the button */
+    
+
+}
+
+
+.room-card {
+    display: flex;
+    width: 80%;
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    position: relative;
+}
+
+
+.room-image {
+    flex: 1;
+    max-width: 250px;
+    margin-right: 20px;
+    border-radius: 10px; /* Adding a slight border radius for better visuals */
+    width: 100%;
+    display: block;
+}
+
+.room-details {
+    flex: 2;
+}
+
+.room-details h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.room-details p {
+    margin: 5px 0;
+}
+
+.price-tag {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.select-button {
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.select-button:hover {
+    background-color: #45a049;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Modal Content (the image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 10px;
+}
+
+/* Close button (X) */
+.close {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+}
+
+/* Position the gallery button at the bottom right of the image */
+/* Style for the Gallery button */
+.gallery-button {
+    position: absolute;
+    bottom: 15%; /* Distance from the bottom */
+    left: 24%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust for true center alignment */
+    margin-right: 5px;
+    /* Other styles remain the same */
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+}
+
+.gallery-button:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-slider {
+    position: relative;
+    max-width: 80%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slides-container {
+    display: flex;
+    overflow: hidden;
+    max-width: 100%;
+    max-height: 80%;
+}
+
+.slides-container img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    font-size: 30px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transform: translateY(-50%);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Adjust the layout for smaller screens */
+@media (max-width: 768px) {
+    .room-card {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .room-image {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .room-details {
+        text-align: center;
+    }
+    .gallery-button {
+        
+        font-size: 12px;
+        bottom: 38%; /* Distance from the bottom */
+        left: 90%; /* Center horizontally */
+    }
+}

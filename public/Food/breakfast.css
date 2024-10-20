@@ -1,0 +1,24 @@
+#breakfast-menu {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+#breakfast-menu h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.menu-image img {
+    width: 794px; /* Width for A4 size */
+    height: 1123px; /* Height for A4 size */
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .menu-image img {
+        width: 100%; /* Make image responsive on mobile */
+        height: auto;
+    }
+}

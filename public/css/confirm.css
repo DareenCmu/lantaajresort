@@ -1,0 +1,204 @@
+
+.confirmation-details-container {
+    margin-top: 30px; /* Adds space between the header and the container */
+}
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+.input-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    
+}
+/* Input field styling */
+.unique-input-group {
+    flex: 1;
+    margin-right: 50px;
+}
+
+.terms-conditions{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.unique-input-group:last-child {
+    margin-right: 0; /* Ensure no extra space on the last input */
+}
+
+.unique-input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.unique-input-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+/* Container Wrapper */
+.container-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Guest Details Section */
+.guest-details-section {
+    width: 48%;
+    padding-right: 20px;
+}
+
+/* Vertical Divider */
+.vertical-divider {
+    width: 1px;
+    background-color: #ddd;
+    height: auto;
+    margin: 0 20px;
+}
+
+/* Booking Summary Section */
+.booking-summary-section {
+    width: 48%;
+}
+
+.booking-summary-section h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.booking-summary-details p {
+    font-size: 14px;
+    color: #333;
+    margin: 5px 0;
+}
+
+.booking-summary-details h3 {
+    font-size: 16px;
+    margin: 15px 0 5px;
+    color: #000;
+}
+
+.booking-summary-details span {
+    font-weight: bold;
+    color: #000;
+}
+
+hr {
+    border: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+.booking-total {
+    font-size: 18px;
+    color: #333;
+    text-align: right;
+}
+
+.booking-total p {
+    margin: 5px 0;
+}
+
+.booking-total strong {
+    font-size: 24px;
+    color: #000;
+}
+/* Booking Conditions Section */
+.booking-conditions {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+.booking-conditions p {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.booking-conditions ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.booking-conditions ul li {
+    margin-bottom: 8px;
+}
+
+.notes {
+    font-size: 13px;
+    color: #777;
+    margin-top: 10px;
+}
+input[type="radio"] {
+    width: 13px;  /* Adjust the width */
+    height: 13px; /* Adjust the height */
+    transform: scale(1.5); /* Adjust the scale for size */
+    margin-right: 8px;
+    
+}
+.radio-options {
+    display: flex;
+    align-items: center;
+    gap: 50px; /* Adjust the space between the options */
+    margin-top: 20px;
+}
+
+.radio-options label {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+}
+
+/* Commentary Box Styling */
+.unique-input-group textarea {
+    width: 108%;
+    height: 100px;  /* Adjusted to match the height in the image */
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: none;  /* Prevents resizing */
+}
+/* Responsive design */
+@media (max-width: 768px) {
+    .confirmation-details-container {
+        flex-direction: column;
+    }
+
+    /* Ensure Booking Summary appears first on smaller screens */
+    .booking-summary-section {
+        order: -1;
+        width: 100%;
+    }
+
+    .guest-details-section {
+        width: 100%;
+    }
+    .input-row {
+        flex-direction: column;
+    }
+
+    .unique-input-group {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    .container-wrapper {
+        flex-direction: column;
+    }
+
+
+    .vertical-divider {
+        display: none;
+    }
+}

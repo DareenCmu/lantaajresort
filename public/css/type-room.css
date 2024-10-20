@@ -1,0 +1,92 @@
+#room-types-section {
+    padding: 50px 0;
+    background-color: #f9f9f9;
+}
+
+.room-types-container {
+    
+    margin: auto;
+    text-align: center;
+}
+
+.room-types-heading {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.room-slider {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    width: 100%; /* Make sure the slider is 100% of its parent container */
+}
+
+.room-slide {
+    flex: 1 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 100%; /* Ensure each slide takes up full width available */
+}
+
+.room-slide img {
+    width: 100%; /* Full width to ensure the image covers the container */
+    height: 400px; /* Set the desired height, adjust as needed */
+    object-fit: cover; /* Ensures the image covers the space without distortion */
+    display: block; /* Removes any extra space caused by inline-block behavior */
+    border-radius: 8px; /* Optional: Add some styling to images */
+}
+
+.room-description {
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+
+
+.slider-nav {
+    text-align: center;
+    margin-bottom: -40px;
+}
+
+.prev-slide, .next-slide {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1024px) {
+    .room-slide img {
+        height: 250px; /* Adjust height for smaller screens */
+        
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .room-slide {
+        min-width: 10%;
+    }
+    .room-slider {
+        margin-bottom: -40%;
+    }
+    .room-slide img {
+        height: 250px; /* Adjust height for smaller screens */
+        
+    }
+
+    .room-types-heading {
+        font-size: 2rem;
+    }
+
+    .room-description {
+        font-size: 0.9rem;
+    }
+
+}
+@media screen and (max-width: 480px) {
+    .room-slider {
+        margin-bottom: 1%;
+    }
+}

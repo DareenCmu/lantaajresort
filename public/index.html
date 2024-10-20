@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lanta A&J Resort</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/style-Events.css">
+    <link rel="stylesheet" href="css/style-tour.css">
+    <link rel="stylesheet" href="css/dining.css">
+    <link rel="stylesheet" href="css/type-room.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick-theme.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <a href="/index.html"><img src="/pictures/logo.png" alt="Hotel Logo" class="logo"></a>
+                <div class="vertical-line"></div>
+                <span class="resort-name">Lanta A&J Klong-khong Beach</span>
+            </div>
+            <nav id="covered">
+                <ul class="main-nav">
+                    <li><a href="/rooms.html">Rooms</a></li>
+                    <li><a href="/activities.html">Activities</a></li>
+                    <li><a href="/menu.html">Restuarant Menu</a></li>
+                    <li><a href="/contact.html">Contact Us</a></li>
+                </ul>
+
+            </nav>
+                <div class="book-now">
+                    <a href="#book-now" class="book-now-btn">Book Now</a>
+                </div>
+                <div class="hamburger-menu" id="hamburgerMenu">
+                    <!-- Hamburger Icon -->
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+        </div>
+     
+    </header>
+    <div class="side-menu" id="sideMenu">
+        <button class="close-btn" id="closeBtn">&times;</button>
+        <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/rooms.html">Rooms</a></li>
+            <li><a href="/activities.html">Activities</a></li>
+            <li><a href="/menu.html">Restuarant Menu</a></li>
+            <li><a href="/contact.html">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <section id="slideshow">
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img src="/pictures/2.jpg" style="width:100%">
+            </div>
+            <div class="mySlides fade">
+                <img src="/pictures/4.jpg" style="width:100%">
+            </div>
+            <div class="mySlides fade">
+                <img src="/pictures/3.jpg" style="width:100%">
+            </div>
+            <div class="mySlides fade">
+                <img src="/pictures/breakfast.jpg" style="width:100%">
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <br>
+
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span> 
+            <span class="dot" onclick="currentSlide(2)"></span> 
+            <span class="dot" onclick="currentSlide(3)"></span> 
+            <span class="dot" onclick="currentSlide(4)"></span> 
+        </div>
+    </section>
+    
+    <div class="booking-under-slideshow">
+        <form class="booking-form">
+            <div class="input-group">
+                <label for="checkin">Check-in</label>
+                <input type="date" id="checkin" class="booking-input" value="">
+            </div>
+            <div class="input-group">
+                <label for="checkout">Check-out</label>
+                <input type="date" id="checkout" class="booking-input" value="">
+            </div>
+            <div class="input-group dropdown-toggle">
+                <label for="guests">Rooms and Guests</label>
+                <div id="guests" class="booking-input">
+                    <span id="guest-summary">1 Room, 2 Adults, 0 Children</span>
+                    <div class="dropdown-arrow">&#9660;</div>
+                </div>
+                <div class="guest-options">
+                    <div class="rooms-option">
+                        <span>Rooms</span>
+                        <button type="button" id="room-minus">-</button>
+                        <input type="text" id="room-count" value="1" readonly>
+                        <button type="button" id="room-plus">+</button>
+                    </div>
+                    <div class="guest-option">
+                        <span>Adults</span>
+                        <button type="button" id="adult-minus">-</button>
+                        <input type="text" id="adult-count" value="2" readonly>
+                        <button type="button" id="adult-plus">+</button>
+                    </div>
+                    <div class="guest-option">
+                        <span>Children</span>
+                        <button type="button" id="child-minus">-</button>
+                        <input type="text" id="child-count" value="0" readonly>
+                        <button type="button" id="child-plus">+</button>
+                    </div>
+                    <button type="button" class="confirm-btn" onclick="confirmGuestSelection()">Confirm</button>
+                </div>
+            </div>
+            <div class="input-group">
+            <button type="button" class="check-availability-btn" id="check-availability-btn" onclick='window.location.href="/available-rooms.html"'>Check Availability</button>
+        </div>
+        </form>
+    </div>
+    
+
+        <!-- About Us Section -->
+        <section id="about-us">
+            <div class="container about-us-content">
+                <div class="about-us-image">
+                    <img src="/pictures/2.jpg" alt="Hotel Aerial View" style="width:100%;">
+                </div>
+                <div class="about-us-text">
+                    <h2>Why so many travelers make <span class="highlight-text">Lanta A&J Klong Khong Beach</span> their inn of choice when visiting Ko Lanta.</h2>
+                    
+                        <p> We're Providing an ideal mix of value, comfort and convenience, it offers a family-friendly setting with an array of amenities designed for travelers like you.</p>
+
+                        <p> Rooms at Lanta A&J Klong Khong Beach provide air conditioning and a refrigerator, and guests can stay connected with free wifi.</p>
+
+                        <p> In addition, while staying at Lanta A&J Klong Khong Beach guests have access to room service, a sun terrace, and a restaurant. You can also enjoy a lounge. Need a place to park? Free parking is available at Lanta A&J Klong Khong Beach. </p>
+                    
+                </div>
+            </div>
+        </section>
+
+        
+        <section id="room-types-section">
+            <div class="room-types-container">
+                <h2 class="room-types-heading">Rooms & Suites</h2>
+                <div class="room-slider">
+                    <div class="room-slide" >
+                        <img src="/pictures/4.jpg" alt="Room Type 1">
+
+                    </div>
+                    <div class="room-slide">
+                        <img src="/pictures/room1.jpg" alt="Room Type 2">
+
+                    </div>
+                    <div class="room-slide">
+                        <img src="/pictures/room2.jpg" alt="Room Type 3">
+
+                    </div>
+                    <div class="room-slide">
+                        <img src="/pictures/room2.jpg" alt="Room Type 3">
+                        <!-- <p class="room-description">Description for Room Type 3</p> -->
+                    </div>
+                    
+                </div>
+                <div class="slider-nav">
+                    <button class="prev-slide">←</button>
+                    <button class="next-slide">→</button>
+                </div>
+            </div>
+        </section>
+        
+
+        
+
+        
+
+        <section id="amenities">
+            <div class="container-amenities">
+                <h2>Amenities</h2>
+                <div class="amenities-icons">
+                    <div class="amenity-item">
+                        <i class="fas fa-wifi"></i>
+                        <p>Free Wi-Fi</p>
+                    </div>
+                    <div class="amenity-item">
+                        <i class="fas fa-parking"></i>
+                        <p>Free Parking</p>
+                    </div>
+                    <div class="amenity-item">
+                        <i class="fas fa-utensils"></i>
+                        <p>On-site Restaurant</p>
+                    </div>
+                    <div class="amenity-item">
+                        <i class="fas fa-cocktail"></i>
+                        <p>Bar</p>
+                    </div>
+                    <div class="amenity-item">
+                        <i class="fas fa-spa"></i>
+                        <p>Spa</p>
+                    </div>
+                    <div class="amenity-item">
+                        <i class="fas fa-tshirt"></i>
+                        <p>Laundry</p>
+                    </div>
+                    <div class="amenity-item">
+                        <i class="fas fa-motorcycle"></i>
+                        <p>Rental Motorcycle</p>
+                    </div>
+                    <div class="amenity-item">
+                        <i class="fas fa-car"></i>
+                        <p>Rental Car</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+        <section id="styled-section">
+            <div class="container-room">
+                <div class="image-left">
+                    <img src="/pictures/Restaurant/Dom.jpg" alt="First Image">
+                </div>
+                <div class="text-center">
+                    <h2>Unforgettable Nightly Events.</h2>
+                    <p>Experience the thrill of nightly fire shows and the charm of live music by the beach. In evening at Lanta A&J Resort is a celebration under the stars.</p>
+                </div>
+                <div class="right-slideshow-container">
+                    <div class="rightSlide fade">
+                        <img src="/pictures/Restaurant/fire-show2.jpg" alt="Slide 1">
+                    </div>
+                    <div class="rightSlide fade">
+                        <img src="/pictures/Restaurant/fire-show3.jpg" alt="Slide 2">
+                    </div>
+                    <div class="rightSlide fade">
+                        <img src="/pictures/Restaurant/fire-show4.jpg" alt="Slide 3">
+                    </div>
+                    <!-- Add more slides as needed -->
+                    <a class="prev-right" onclick="plusRightSlides(-1)">&#10094;</a>
+                    <a class="next-right" onclick="plusRightSlides(1)">&#10095;</a>
+                </div>
+            </div>
+        </section>
+        
+        
+        <section id="styled-section-tour">
+            <div class="container-tour">
+                <div class="text-center-tour-header">
+                    <h2>Explore Koh Lanta!</h2>
+                </div>
+                <div class="image-left-tour">
+                    <img src="/pictures/island.jpg" alt="First Image">
+                </div>
+                <div class="text-center-tour">
+                    <h2>Explore Koh Lanta!</h2>
+                    <p><span class="highlight-text">At Lanta A&J Resort,</span> we're here to help you find the perfect adventure. Whether it's a snorkeling tour to explore vibrant coral reefs or a peaceful kayaking trip through mangrove forests, we can recommend and book the best tours tailored just for you.</p>
+                </div>
+                <div class="image-right">
+                    <img src="/pictures/kayak.jpg" alt="Second Image">
+                </div>
+            </div>
+        </section>
+
+<section id="dining-experience">
+    <div class="l-center">
+        <div class="l-container">
+          <div class="l-grid">
+            <div>
+              <div class="l-max o-aspect-ratio" data-padding="80">
+                <div class="o-overlap-bottom">
+                  <div class="o-aspect-ratio" data-padding="66">
+                    <img class="o-aspect-ratio__media" src="/pictures/Restaurant/picturemain.jpg" alt="Misty shroud over a forest">
+                  </div>
+                  <div class="o-overlap-bottom__deco"></div>
+                </div>
+                <div class="o-overlap-top">
+                  <div class="o-aspect-ratio" data-padding="66">
+                    <img class="o-aspect-ratio__media" src="/pictures/Restaurant/picturemain2.jpg" alt="Plant in vase of water">
+                  </div>
+                  <div class="o-overlap-top__deco o-aspect-ratio"></div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h1><div class="dining-header">Dining</div> Enjoy tasty Thai and Western cuisine at Jeab's Dining, the beachfront restaurant at Lanta A&J Resort. Enjoy delicious meals with stunning beach and sunset views, creating a remarkable dining experience.</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+
+   
+<footer>
+    <div class="footer-container">
+        <!-- Contact Us Section -->
+        <div class="footer-section contact-us">
+            <h4>Contact Us</h4>
+            <p>Email: opoonfamily@hotmail.com</p>
+            <p>Phone: +66 123 456 789</p>
+            <div class="footer-section-icons">
+                <a href="https://wa.me/1234567890" target="_blank">
+                    <i class="fab fa-whatsapp whatsapp-icon"></i>
+                </a>
+                <a href="https://m.me/username" target="_blank">
+                    <i class="fab fa-facebook-messenger messenger-icon"></i> 
+                </a>
+            </div>
+        </div>
+
+        <!-- Centered Logo Section -->
+        <div class="footer-section logo-section">
+
+            <h5>© 2015 Lanta A&J Klong Khong Beach </h5>
+        </div>
+
+        <!-- Connect Us Section -->
+        <div class="footer-section connect-us">
+            <h4>Connect Us</h4>
+            <a href="https://www.facebook.com/LantaAJbeachresort/">
+                <i class="fab fa-facebook-f facebook-icon"></i> Lanta A&J Resort
+            </a>
+            <a href="https://www.facebook.com/LantaAJbeachresort/">
+                <i class="fab fa-facebook-f facebook-icon"></i> Jeab's Dining
+            </a>
+        </div>
+    </div>
+</footer>
+    
+        <!-- Additional Sections can be added below as needed -->
+
+    <script src="js/script.js"></script>
+    <script src="js/booking.js"></script>
+
+
+
+    <script type="text/javascript">
+       $(document).ready(function(){
+        $('.room-slider').slick({
+        centerMode: true,
+        centerPadding: '180px', // Adjust this to show more of the left and right images
+        slidesToShow: 2, // Shows two slides in the center
+        infinite: true, // Ensures infinite scrolling
+        prevArrow: $('.prev-slide'), // Custom previous button
+        nextArrow: $('.next-slide'), // Custom next button
+        responsive: [
+
+            {
+                breakpoint: 769,
+                settings: {
+                    arrows: false,  // Disable arrows on smaller screens if desired
+                    centerMode: true,
+                    centerPadding: '40px',
+                    slidesToShow: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    arrows: false,  // Disable arrows on smaller screens if desired
+                    centerMode: true,
+                    centerPadding: '40px',
+                    slidesToShow: 1
+                }
+            }
+        ]
+    });
+});
+    </script>
+    
+</body>
+</html>

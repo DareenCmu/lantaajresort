@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lanta A&J Resort</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/style-contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgI4OrUASpezDmykjRDOyJPWBWhWX_GfM&callback=initMap" async defer></script>
+
+    
+    <link rel="stylesheet" href="css/rooms.css">
+    <link rel="stylesheet" href="css/beach-front.css">
+    <link rel="stylesheet" href="css/dining.css">
+    
+    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick-theme.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+        
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <a href="/index.html"><img src="/pictures/logo.png" alt="Hotel Logo" class="logo"></a>
+                <div class="vertical-line"></div>
+                <span class="resort-name">Lanta A&J Klong-khong Beach</span>
+            </div>
+            <nav id="covered">
+                <ul class="main-nav">
+                    <li><a href="/rooms.html">Rooms</a></li>
+                    <li><a href="/activities.html">Activities</a></li>
+                    <li><a href="/menu.html">Restuarant Menu</a></li>
+                    <li><a href="/contact.html">Contact Us</a></li>
+                </ul>
+
+            </nav>
+                <div class="book-now">
+                    <a href="#book-now" class="book-now-btn">Book Now</a>
+                </div>
+                <div class="hamburger-menu" id="hamburgerMenu">
+                    <!-- Hamburger Icon -->
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+        </div>
+     
+    </header>
+    <div class="side-menu" id="sideMenu">
+        <button class="close-btn" id="closeBtn">&times;</button>
+        <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/rooms.html">Rooms</a></li>
+            <li><a href="/activities.html">Activities</a></li>
+            <li><a href="/menu.html">Restuarant Menu</a></li>
+            <li><a href="/contact.html">Contact Us</a></li>
+        </ul>
+    </div>
+
+<!-- GPS Map Container -->
+<div id="map"></div>
+
+    <!-- Information Bar below the map -->
+    <div class="info-bar">
+        <div class="info-item">
+            <h4>Address</h4>
+            <p>368 Moo 2 Saladan, Koh Lanta,<br>Krabi 81150 Thailand</p>
+        </div>
+        <div class="info-item">
+            <h4>Tel</h4>
+            <p>+66 (0) 127382917</p>
+            <p>+66 (0) 127382917</p>
+        </div>
+        <div class="info-item">
+            <h4>Whatsapp</h4>
+            <p>+66 (0) 3842 6358</p>
+        </div>
+        <div class="info-item">
+            <h4>Email</h4>
+            <p>opoonfamily@hotmail.com</p>
+        </div>
+    </div>
+    <div class="info-section">
+            <!-- Image Section on the Left -->
+            <div class="image-left">
+                <img src="/pictures/map.png"  alt="Map Koh Lanta"> 
+            </div>
+
+                <!-- Right Side Form -->
+                <div class="submission-form">
+                    <h3>Contact Us</h3>
+                    <form id="contactForm" action="https://formspree.io/f/xnnqqdkz" method="POST">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+            
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+            
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+            
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+
+                    <!-- Modal Popup -->
+                <div id="popup" class="popup">
+                    <div class="popup-content">
+                        <p id="popup-message"></p>
+                        <button onclick="closePopup()">OK</button>
+                    </div>
+    </div>
+
+    </div>
+      
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>Email: opoonfamily@hotmail.com</p>
+                <p>Phone: +66 123 456 789</p>
+            </div>
+            <div class="footer-section">
+                <div class="center">
+                    <h4>© 2015 Lanta A&J Klong Khong Beach</h4>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Connect with Us</h4>
+                <a href="https://www.facebook.com/LantaAJbeachresort/"><i class="fab fa-facebook-f facebook-icon"></i> Lanta A&J Resort</a>
+                <a href="https://www.facebook.com/LantaAJbeachresort/"><i class="fab fa-facebook-f facebook-icon"></i> Jeab's Dining</a>
+            </div>
+        </div>
+    </footer>
+    
+    
+        <!-- Additional Sections can be added below as needed -->
+
+
+
+
+    
+    <script>
+        // Initialize Google Map
+        function initMap() {
+            var location = { lat: 7.5806, lng: 99.0348 }; // Example coordinates for Lanta A&J Resort, replace with your location
+
+            // Create a new map centered at the given location
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15, // Adjust zoom level as needed
+                center: location,
+                gestureHandling: 'cooperative' // Require Ctrl/Cmd to zoom with mouse wheel
+            });
+
+            // Add a marker to the map at the specified location
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+        }
+
+        // Handle form submission
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        message: document.getElementById('message').value
+    };
+
+    // Replace '/send-email' with your Formspree form URL
+    fetch('https://formspree.io/f/xnnqqdkz', { 
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Handle success
+        showPopup('Message sent successfully!');
+    })
+    .catch(error => {
+        // Handle error
+        showPopup('Error sending message');
+        console.error('Error:', error);
+    });
+});
+
+        // Show popup with a message
+        function showPopup(message) {
+            document.getElementById('popup-message').textContent = message;
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        // Close popup
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        // JavaScript to toggle the side menu
+            document.getElementById('hamburgerMenu').addEventListener('click', function() {
+                document.getElementById('sideMenu').style.right = '0';
+            });
+
+            document.getElementById('closeBtn').addEventListener('click', function() {
+                document.getElementById('sideMenu').style.right = '-250px';
+            });
+
+            //
+            
+
+    </script>
+
+    <!-- CSS for Modal -->
+    <style>
+        .popup {
+            display: none; /* Hidden by default */
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000; /* Above other elements */
+        }
+
+        .popup-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            width: 300px;
+        }
+
+        .popup-content button {
+            margin-top: 20px;
+            padding: 10px 20px; /* Increase padding for better click area */
+            background-color: #4CAF50; /* Green background */
+            color: white; /* White text */
+            border: none; /* Remove default border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
+            font-size: 16px; /* Slightly larger font size */
+            transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover effects */
+        }
+
+        .popup-content button:hover {
+            background-color: #45a049; /* Darker green on hover */
+            transform: scale(1.05); /* Slight zoom-in effect */
+        }
+
+        .popup-content button:focus {
+            outline: none; /* Remove default outline */
+            box-shadow: 0 0 10px #4CAF50; /* Add glow effect */
+        }
+    </style>
+
+
+
+</body>
+</html>

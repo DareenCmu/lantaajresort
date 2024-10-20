@@ -1,0 +1,1059 @@
+html,body {
+    font-family: "DM Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    
+
+}
+
+
+
+
+header {
+    background-color: #ffffff;
+    padding: 20px 0 40px;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /* Set position to relative to adjust logo position */
+    z-index: 2;
+    flex-wrap: wrap;
+    
+}
+
+.logo-container {
+    position: absolute; /* Position the logo absolutely */
+    left: 20px; /* Adjust this value as needed to move the logo left or right */
+    top: 80%;
+    transform: translateY(-50%); /* Vertically center the logo */
+    flex-shrink: 0; /* Prevent the logo container from shrinking */
+    display: flex; /* Align logo and text horizontally */
+    align-items: center; /* Vertically center the logo and text */
+}
+
+.logo {
+    height: 80px; /* Adjusted the height of the logo */
+    margin-right: 10px; /* Space between logo and text */
+    
+}
+
+.vertical-line {
+    width: 1.3px; /* Adjust the thickness of the line */
+    height: 60px; /* Match the height of the logo */
+    background-color: #1d6c7c; /* Color of the line */
+    margin-right: 10px; /* Space between line and text */
+}
+
+.resort-name {
+    font-size: 24px; /* Adjust the size of the text */
+    color: #125f6e; /* Color of the text */
+    font: 1.8rem ;
+    font-family: "Source Sans 3", sans-serif;
+    font-size: 900;
+    
+    
+    
+}
+
+
+nav {
+    margin-left: auto; /* Push the navigation to the right */
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    align-items: center; /* Center the nav items vertically */
+}
+
+nav ul li {
+    margin: 0 15px;
+    padding-top: 20px;
+    
+}
+
+nav ul li a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 16px; /* Optional: adjust font size */
+    padding: 30px 15px; /* Padding for the link */
+    line-height: 1.5; /* Adjusts the space above and below the text */
+    position: relative; /* Needed for the underline effect */
+    border-radius: 5px; /* Optional: Rounded corners for the background */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for background and text color */
+}
+
+/* Hover effect: underline */
+nav ul li a:hover {
+    color: white;
+    background-color: #125f6e; /* Background color on hover */
+    
+    
+    
+}
+
+/* Adding an underline directly under the text */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0; 
+    margin: 25px auto; /* Center the underline */
+    height: 2px; /* Adjust thickness of underline */
+    width: 0;
+    background-color: white; /* Underline color */
+    transition: width 0.3s ease; /* Smooth transition */
+}
+
+/* Expand the underline on hover */
+nav ul li a:hover::after {
+    width: 50%; /* Show the underline */
+}
+
+.book-now {
+    margin-top: 20px;
+    text-align: right; /* Align the button to the right on larger screens */
+}
+.book-now-btn:hover {
+    background-color: #c0820e;
+}
+
+.book-now-btn {
+    background-color: #e69500;
+    color: white;
+   
+    padding: 10px 20px ;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px; /* Optional: adjust font size */
+}
+
+#slideshow {
+    position: relative;
+    margin: auto;
+    max-width: 100%;
+    height: 500px; /* Adjust the height to match the image you provided */
+    
+}
+
+/* Fade in animation */
+@keyframes fadeEffect {
+    from { opacity: 0.85; }
+    to { opacity: 1; }
+}
+
+.mySlides {
+    display: none;
+    animation: fadeEffect 1.5s;
+    
+}
+
+.mySlides img {
+    width: 100%;
+    height: 500px; /* Ensure the images fit the container */
+    object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+    background-color: #717171;
+}
+
+/* Booking form styling directly under the slideshow */
+.booking-under-slideshow {
+    background-color: #f8f8f8;
+    padding: 50px 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.booking-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-left: 70px;
+    border-radius: 10px;
+    background-color: #f4aa21;
+    
+}
+/* Target the label with the 'for' attribute set to 'checkin' */
+label[for="checkin"] {
+    font-size: 15px; /* Optional: Adjust the font size */
+    margin-left: 100px;
+    text-align: center; /* Optional: Adjust text alignment */
+    display: block; /* Ensure the label displays as a block element */
+}
+label[for="checkout"] {
+    font-size: 15px; /* Optional: Adjust the font size */
+    margin-left: 100px;
+    text-align: center; /* Optional: Adjust text alignment */
+    display: block; /* Ensure the label displays as a block element */
+}
+label[for="guests"] {
+    font-size: 15px; /* Optional: Adjust the font size */
+    margin-left: 70px;
+    text-align: center; /* Optional: Adjust text alignment */
+    display: block; /* Ensure the label displays as a block element */
+}
+.input-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 500%; /* Allow the input to take the full width */
+    max-width: 320px; /* Optional: Define a consistent max width */
+    margin-right: 10px;
+    
+}
+
+.booking-input {
+    padding: 15px;
+    font-family: "DM Sans", sans-serif;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    color: #333;
+    width: 100%;
+    text-align: center;
+    background-color: #f7f7f7;
+    position: relative;
+
+}
+
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.dropdown-arrow {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+#guest-summary{
+    margin-left: -30px;
+}
+
+.guest-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.guest-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.guest-option span {
+    flex: 1;
+    
+}
+
+.guest-option button {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: #ccc;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.guest-option input {
+    width: 40px;
+    text-align: center;
+    border: none;
+    background-color: #f7f7f7;
+    font-size: 1rem;
+    pointer-events: none;
+}
+
+.confirm-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #1d6c7c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.confirm-btn:hover {
+    background-color: #e69500;
+}
+
+.check-availability-btn {
+    
+    margin-top: 18px;
+    margin-right: 20px;
+    background-color: #158399;
+    color: white;
+    padding: 17px 50px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 400;
+
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+
+
+.check-availability-btn:hover {
+    background-color: #104d59;
+}
+/* Adding Rooms Option */
+.rooms-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.rooms-option span {
+    flex: 1;
+}
+
+.rooms-option button {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: #ccc;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.rooms-option input {
+    width: 40px;
+    text-align: center;
+    border: none;
+    background-color: #f7f7f7;
+    font-size: 1rem;
+    pointer-events: none;
+}
+
+
+/* About Us Section Styling */
+#about-us {
+    background-color: #f8f8f8;
+    padding: 50px 0;
+}
+
+.about-us-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.about-us-image {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.about-us-text {
+    flex: 1;
+    padding: 20px;
+    
+}
+
+.about-us-text h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.about-us-text p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+    
+}
+
+
+
+
+footer {
+    background-color: #e69500;
+    color: white;
+    padding: 10px 0;
+  
+    text-align: center;
+    width: 100%;
+    position: relative; /* Change to relative */
+
+    z-index: 1000; /* Keeps it above other elements if needed */
+    margin-top: auto; /* Pushes footer to bottom when content is short */
+    
+}
+
+.footer-container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Allow sections to wrap on smaller screens */
+    
+    
+}
+
+.footer-section {
+    flex: 1; /* Make each section take equal space */
+    min-width: 250px; /* Ensure sections don't get too small */
+    margin: 10px 0; /* Add some space between sections */
+    
+}
+.logo-section h5{
+margin-top: 140px;
+}
+
+.footer-section h4 {
+    margin-bottom: 10px;
+}
+
+.footer-section p, .footer-section a {
+    color: #ffffff; /* Lighter text color for content */
+    font-size: 14px;
+    text-align: left;
+    margin-left: 140px;
+}
+
+.footer-section a {
+    color: #ffffff;
+    font-size: 14px;
+    text-decoration: none;
+    display: block; /* Each link starts on a new line */
+    margin-bottom: 10px; /* Optional: Add space between links */
+    align-items: center;
+ 
+}
+
+.cencer {
+    text-align: center; /* Center aligns the content */
+   display: flex;
+   margin-left:100px ;
+
+  
+   
+}
+.footer-section .cencer img {
+    align-items: center;
+    margin-left: 40px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+   
+}
+
+.cencer h5{
+    text-align: center;
+}
+
+.footer-section a i {
+    margin-right: 8px;
+   
+    
+}
+
+.footer-section a:hover {
+    color: white;
+}
+
+
+
+/* Social Links */
+.footer-section a {
+    color: #ffffff;
+    font-size: 14px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    transition: color 0.3s ease;
+}
+.footer-section-icons {
+    margin-right: 80px;
+
+}
+.footer-section-icons a{
+    display: inline-block;
+
+}
+.footer-section .facebook-icon {
+    background-color: #3f5a94; /* Facebook blue color */
+    color: white;
+    border-radius: 50%;
+    font-size: 14px;
+    padding: 8px;
+    margin-left: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 20px;
+}
+
+.footer-section a:hover {
+    color: #dddddd;
+}
+
+.footer-section a i:hover {
+    background-color: #365492; /* Slightly darker on hover */
+}
+
+.footer-section .whatsapp-icon {
+    color: #ffffff; /* WhatsApp green color */
+    border-radius: 50%;
+    font-size: 28px;
+    padding: 8px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 20px;
+    background:
+    linear-gradient(#25d366,#25d366) 14% 84%/16% 16% no-repeat,
+    radial-gradient(#25d366 64%,transparent 0);
+}
+.footer-section .messenger-icon {
+    color: #00B2FF; /* WhatsApp green color */
+    border-radius: 50%;
+    font-size: 28px;
+    padding: 8px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 20px;
+    background:
+    linear-gradient(white,white) 14% 84%/16% 16% no-repeat,
+    radial-gradient(white 64%,transparent 0);
+}
+
+#amenities {
+    padding: 50px 0;
+    background-color: #fff;
+    text-align: center;
+    padding-bottom: 90px;
+    
+
+}
+
+#amenities h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 40px;
+    
+    
+}
+
+.amenities-icons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.amenity-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 150px;
+}
+
+.amenity-item i {
+    font-size: 40px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.amenity-item p {
+    font-size: 16px;
+    color: #555;
+    margin: 0;
+}
+
+.hamburger-menu {
+    display: flex; /* Display on all screens */
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 18px;
+    transition: transform 0.3s ease;
+    margin-left: 15px; /* Optional: adjust spacing */
+    margin-top: 17px;
+}
+
+/* Styling for hamburger menu lines */
+.hamburger-menu span {
+    display: block;
+    height: 3px;
+    background-color: #0e5664; /* Color for top and bottom lines */
+    border-radius: 2px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Style the middle line separately */
+.hamburger-menu span:nth-child(2) {
+    background-color: #e69500; /* Different color for the middle line */
+}
+
+/* Hover effect for the hamburger menu */
+.hamburger-menu:hover {
+    transform: scale(1.1); /* Slightly increase the size on hover (optional) */
+}
+
+/* Hover effect for all spans */
+.hamburger-menu:hover span {
+    background-color: #104d59; /* Change color on hover */
+}
+
+/* Keep the middle line a different color even on hover */
+.hamburger-menu:hover span:nth-child(2) {
+    background-color: #e69500; /* Retain or adjust the hover color for the middle line */
+}
+
+/* Optional: Specific transform effects on hover */
+.hamburger-menu:hover span:nth-child(1) {
+    transform: translateY(-1px); /* Slight shift on hover */
+}
+
+.hamburger-menu:hover span:nth-child(3) {
+    transform: translateY(1px); /* Slight shift on hover */
+}
+/* Side Menu Styles */
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -250px; /* Hidden off-screen initially */
+    width: 250px;
+    height: 100vh;
+    background-color: white;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s ease; /* Slide-in effect */
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* Close button for side menu */
+.close-btn {
+    align-self: flex-end;
+    margin-bottom: 20px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+}
+
+/* List and links styling inside side menu */
+.side-menu ul {
+    list-style: none; /* Remove bullets */
+    padding: 0;
+    margin: 0;
+}
+
+.side-menu li {
+    margin: 15px 0;
+}
+
+.side-menu a {
+    color: #125f6e; /* Set link color */
+    text-decoration: none; /* Remove default underline */
+    font-size: 23px;
+    position: relative; /* Necessary for underline effect */
+    display: block; /* Make links behave like block elements */
+    padding: 10px 15px; /* Add padding for hover effect */
+    width: 100%; /* Full width to cover the side menu */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+}
+
+/* Hover effect for side menu links */
+.side-menu a:hover {
+    background-color: #104d59; /* Background color on hover */
+    color: white; /* Change text color on hover */
+}
+
+/* Adding an underline directly under the text for side menu */
+.side-menu a::after {
+    content: '';
+    position: absolute;
+    left: 20%; /* Start underline from center */
+    bottom: 8px; /* Position the underline slightly above the bottom padding */
+    height: 2px; /* Thickness of the underline */
+    width: 0; /* Start with no width */
+    background-color: white; /* Underline color */
+    transition: width 0.3s ease; /* Smooth width transition */
+    transform: translateX(-50%); /* Center the underline */
+}
+
+/* Expand the underline on hover for side menu links */
+.side-menu a:hover::after {
+    width: 20%; /* Grow underline to 50% of the link width */
+}
+
+.highlight-text{
+    color:#e69500;
+}
+.about-us-text h2{
+    color:#11353c;
+}
+@media screen and (max-width: 768px) {
+    /* Target the label with the 'for' attribute set to 'checkin' */
+    label[for="checkin"] {
+        margin-left: 125px;
+    }
+    label[for="checkout"] {
+        margin-left: 125px;
+    }
+    label[for="guests"] {
+        margin-left: 100px;
+    }
+    .booking-under-slideshow{
+        justify-content: center; /* Centers the form horizontally */
+        align-items: center; /* Centers the form vertically */
+        
+    }
+    .booking-input {
+        border: 2px solid #e69500;
+        background-color: white;
+    }
+    .booking-form{
+        background-color: white;
+        padding-right: 10%;
+        
+    }
+    /* Hide specific main nav items on smaller screens */
+    .main-nav li {
+        display: none; /* Hide only items inside .main-nav */
+    }
+
+    /* Show the hamburger menu */
+    .hamburger-menu {
+        display: flex;
+    }
+
+
+    /* Active state for side menu */
+    .side-menu.active {
+        right: 0; /* Slide in the menu */
+    }
+
+
+    .input-group{
+        
+        width: 100%; /* Allow the input to take the full width */
+        max-width: 320px; /* Optional: Define a consistent max width */
+    }
+    .booking-form {
+        flex-direction: column;
+        
+        gap: 15px;
+    }
+
+    .check-availability-btn:hover {
+        background-color: #ffffff;
+        color:#104d59;
+        border: 3px solid #104d59;
+
+    }
+    
+    .check-availability-btn,
+    .booking-form select {
+        width: 100%; /* Full width for mobile */
+    }
+
+    .check-availability-btn {
+        text-align: center; /* Center align button text on mobile */
+    }
+
+
+    .container-amenities{
+        flex-direction: column;
+        align-items: flex-start;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
+    .logo-container{
+        margin-top: -2%;
+    }
+    #covered{
+        margin-top: 80px;
+       
+    }
+
+    .nav {
+        
+        width: 100%; /* Ensure nav is full width */
+        text-align: center; /* Center the nav items */
+       
+    }
+
+    .nav ul {
+        flex-direction: column; /* Stack nav items vertically on small screens */
+        
+        
+    }
+
+    .nav ul li {
+        margin: 20px 0; /* Space between nav items */
+        
+        
+    }
+
+    .book-now {
+        
+        align-self: center; /* Center the button on small screens */
+        
+        
+    }
+
+    .book-now-btn {
+        width: 80%; /* Make the button take up more space on smaller screens */
+        font-size: 14px; /* Adjust font size for smaller screens */
+        padding: 10px 50px; /* Adjust padding for a slimmer button */
+    }
+
+
+
+    .about-us-content {
+        flex-direction: column;
+    }
+
+    .about-us-image,
+    .about-us-text {
+        margin: 0;
+        padding: 0;
+    }
+
+    .about-us-text h2 {
+        font-size: 1.5rem;
+    }
+
+
+    .amenities-icons {
+        gap: 30px;
+    }
+
+    .amenity-item {
+        width: 120px;
+    }
+
+    .amenity-item i {
+        font-size: 35px;
+    }
+
+    .amenity-item p {
+        font-size: 14px;
+    }
+
+
+    /* Place Contact Us and Connect Us in the same row */
+    .contact-us, .connect-us {
+        margin-left: -23px;
+        flex: 1;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row; /* Make them horizontal */   
+    }
+    .contact-us .footer-section-icons{
+        margin-left: 80px;
+    }
+    .logo-section .cencer img{
+        display: none;
+    }
+    .logo-section h5{
+        margin-top: -50px;
+    }
+
+    .connect-us {
+        margin-top: 10px;
+    }
+
+    /* Centering logos as they should remain centered */
+    .logo-section {
+        order: 2; /* Ensure it remains centered between Contact Us and Connect Us */
+        margin-top: 20px;
+    }
+}
+
+
+
+@media screen and (max-width: 480px) {
+
+    /* Target the label with the 'for' attribute set to 'checkin' */
+    label[for="checkin"] {
+        margin-left: 110px;
+    }
+    label[for="checkout"] {
+        margin-left: 110px;
+    }
+    label[for="guests"] {
+        margin-left: 85px;
+    }
+    .check-availability-btn:hover {
+        background-color: #ffffff;
+        color:#104d59;
+        border: 3px solid #104d59;
+
+    }
+    .resort-name{
+        font-size: 15px;
+    }
+    .logo-container {
+        top:80%;
+        margin-left: -20px;
+        right: 40%;
+    }
+    .book-now-btn {
+        width: 100%; /* Full width on very small screens */
+        font-size: 14px;
+        padding: 10px 10px; 
+    }
+    .amenities-icons {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .amenity-item {
+        width: 100px;
+    }
+
+    .amenity-item i {
+        font-size: 30px;
+    }
+
+    .amenity-item p {
+        font-size: 13px;
+    }
+    .contact-us, .connect-us{
+        text-align: center;
+        margin-left: -40px;
+        margin-bottom: -30px;
+    }
+    .logo-section h5{
+        margin-top: 30px;
+    }
+    
+}
+@media screen and (max-width: 480px) {
+    /* Target the label with the 'for' attribute set to 'checkin' */
+    label[for="checkin"] {
+        margin-left: 100px;
+        
+    }
+    label[for="checkout"] {
+        margin-left: 100px;
+    }
+    label[for="guests"] {
+        margin-left: 80px;
+    }
+    .amenities-icons {
+
+        flex-direction: row; /* Stack rows vertically */
+        gap: 20px; /* Add space between rows */
+
+    }
+    #amenities {
+        padding: 10px 0;
+        padding-bottom: 10px;
+        
+    
+    }
+    .contact-us h4{
+        margin-left: 50px;
+    }
+    .contact-us{
+        margin-left: -120px;
+        margin-bottom: -30px;
+    }
+    .contact-us .footer-section-icons{
+        margin-left: 130px;
+    }
+    .connect-us h4{
+        margin-left: 50px;
+    }
+    .connect-us{
+        margin-left: -120px;
+        margin-bottom: -30px;
+    }
+    .logo-section h5{
+        margin-top: 10px;
+    }
+
+
+
+}

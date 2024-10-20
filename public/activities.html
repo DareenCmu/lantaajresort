@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activities</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/rooms.css">
+    <link rel="stylesheet" href="css/beach-front.css">
+    <link rel="stylesheet" href="css/dining.css">
+
+    <link rel="stylesheet" href="css/activites.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick-theme.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <a href="/index.html"><img src="/pictures/logo.png" alt="Hotel Logo" class="logo"></a>
+                <div class="vertical-line"></div>
+                <span class="resort-name">Lanta A&J Klong-khong Beach</span>
+            </div>
+            <nav id="covered">
+                <ul class="main-nav">
+                    <li><a href="/rooms.html">Rooms</a></li>
+                    <li><a href="/activities.html">Activities</a></li>
+                    <li><a href="/menu.html">Restuarant Menu</a></li>
+                    <li><a href="/contact.html">Contact Us</a></li>
+                </ul>
+
+            </nav>
+                <div class="book-now">
+                    <a href="#book-now" class="book-now-btn">Book Now</a>
+                </div>
+                <div class="hamburger-menu" id="hamburgerMenu">
+                    <!-- Hamburger Icon -->
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+        </div>
+     
+    </header>
+    <div class="side-menu" id="sideMenu">
+        <button class="close-btn" id="closeBtn">&times;</button>
+        <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/rooms.html">Rooms</a></li>
+            <li><a href="/activities.html">Activities</a></li>
+            <li><a href="/menu.html">Restuarant Menu</a></li>
+            <li><a href="/contact.html">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <section id="slideshow">
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img src="/pictures/2.jpg" style="width:100%">
+            </div>
+            <div class="mySlides fade">
+                <img src="/pictures/4.jpg" style="width:100%">
+            </div>
+            <div class="mySlides fade">
+                <img src="/pictures/3.jpg" style="width:100%">
+            </div>
+            <div class="mySlides fade">
+                <img src="/pictures/breakfast.jpg" style="width:100%">
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <br>
+
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span> 
+            <span class="dot" onclick="currentSlide(2)"></span> 
+            <span class="dot" onclick="currentSlide(3)"></span> 
+            <span class="dot" onclick="currentSlide(4)"></span> 
+        </div>
+    </section>
+    
+    <div class="booking-under-slideshow">
+        <form class="booking-form">
+            <div class="input-group">
+                <label for="checkin">Check-in</label>
+                <input type="date" id="checkin" class="booking-input" value="">
+            </div>
+            <div class="input-group">
+                <label for="checkout">Check-out</label>
+                <input type="date" id="checkout" class="booking-input" value="">
+            </div>
+            <div class="input-group dropdown-toggle">
+                <label for="guests">Rooms and Guests</label>
+                <div id="guests" class="booking-input">
+                    <span id="guest-summary">1 Room, 2 Adults, 0 Children</span>
+                    <div class="dropdown-arrow">&#9660;</div>
+                </div>
+                <div class="guest-options">
+                    <div class="rooms-option">
+                        <span>Rooms</span>
+                        <button type="button" id="room-minus">-</button>
+                        <input type="text" id="room-count" value="1" readonly>
+                        <button type="button" id="room-plus">+</button>
+                    </div>
+                    <div class="guest-option">
+                        <span>Adults</span>
+                        <button type="button" id="adult-minus">-</button>
+                        <input type="text" id="adult-count" value="2" readonly>
+                        <button type="button" id="adult-plus">+</button>
+                    </div>
+                    <div class="guest-option">
+                        <span>Children</span>
+                        <button type="button" id="child-minus">-</button>
+                        <input type="text" id="child-count" value="0" readonly>
+                        <button type="button" id="child-plus">+</button>
+                    </div>
+                    <button type="button" class="confirm-btn" onclick="confirmGuestSelection()">Confirm</button>
+                </div>
+            </div>
+            <div class="input-group">
+            <button type="button" class="check-availability-btn" id="check-availability-btn" onclick='window.location.href="/available-rooms.html"'>Check Availability</button>
+        </div>
+        </form>
+    </div>
+    
+
+    <section id="explore-section">
+        <div class="information-box">
+            <h2><i class="fas fa-map-marker-alt"></i> Discover Exciting Things to Do in Ko Lanta</h2>
+
+            <p>Looking for some fun things to do around Ko Lanta?
+                we’ve got you covered! Just stop by the <span class="highlight-text">reception</span> at <span class="highlight-text">Lanta A&J Klong-khong Beach</span>, 
+                and we’ll be happy to help you plan the perfect activity to make your stay with us truly unforgettable.</p>
+                
+                
+                
+        </div>
+        
+        <div class="explore-container">
+            <div class="explore-card">
+                <img src="/pictures/tour/4island.jpg" alt="Sea Turtle Hatchery">
+                <h3>4 islands and Emerald Cave</h3>
+                <p>Discover four stunning islands, snorkel through the <span class="highlight-text-card">Emerald Cave</span>, and unwind on Ko Ngai and Ko Muk Beach. A perfect adventure in paradise.</p>
+                
+            </div>
+            <div class="explore-card">
+                <img src="/pictures/tour/5island.jpg" alt="Surfing">
+                <h3>Koh Haa & Koh Rok islands</h3>
+                <p>Embark on a snorkeling trip to <span class="highlight-text-card">Koh Rok and Koh Haa</span>. Enjoy crystal-clear waters, vibrant reefs, and a relaxing beachside lunch.</p>
+                
+            </div>
+            <div class="explore-card">
+                <img src="/pictures/tour/phi.jpg" alt="The Galle Fort">
+                <h3>Snorkeling On Phi Phi Islands</h3>
+                <p>Explore Phi Phi Islands, snorkel at <span class="highlight-text-card">Maya Bay</span>, and visit the playful monkeys of <span class="highlight-text-card">Monkey Island</span> on this exciting island-hopping adventure.</p>
+                <!-- button for explore more imformation <a href="#" class="explore-btn">Explore &#10132;</a> -->
+            </div>
+            <div class="explore-card">
+                <img src="/pictures/tour/dive.jpg" alt="Surfing">
+                <h3>Diving at Koh Lanta</h3>
+                <p>Located on the stunning island of Koh Lanta in the Andaman Sea, 
+                    diving here provides convenient access to some of <span class="highlight-text-card">Thailand's top underwater</span> destinations,
+                     such as <span class="highlight-text-card">Koh Haa</span> and the renowned <span class="highlight-text-card">Hin Daeng</span> and <span class="highlight-text-card">Hin Muang</span> dive sites.</p>
+                
+            </div>
+            <div class="explore-card">
+                <img src="/pictures/tour/kayak.jpg" alt="Surfing">
+                <h3>Kayaking</h3>
+                <p>
+                    Kayaking through the <span class="highlight-text-card">mangroves</span> lets you quietly spot <span class="highlight-text-card">wildlife</span> like monkeys and birds, while also exploring <span class="highlight-text-card">sea caves at Koh Talabeng</span>, inaccessible to larger boats.</p>
+                
+            </div>
+            <div class="explore-card">
+                <img src="/pictures/tour/elephant.jpeg" alt="Surfing">
+                <h3>Elephant Tour</h3>
+                <p>Meet elephants as they <span class="highlight-text-card">roam</span> and <span class="highlight-text-card">play</span> in the forest and ponds. Join tour <span class="highlight-text-card">to feed</span>, <span class="highlight-text-card">walk with</span>, and <span class="highlight-text-card">observe them</span> in a stunning mountain landscape.</p>
+                
+            </div>
+            <!-- Repeat for more cards -->
+        </div>
+    </section>
+
+ 
+<footer>
+    <div class="footer-container">
+        <!-- Contact Us Section -->
+        <div class="footer-section contact-us">
+            <h4>Contact Us</h4>
+            <p>Email: opoonfamily@hotmail.com</p>
+            <p>Phone: +66 123 456 789</p>
+            <div class="footer-section-icons">
+                <a href="https://wa.me/1234567890" target="_blank">
+                    <i class="fab fa-whatsapp whatsapp-icon"></i>
+                </a>
+                <a href="https://m.me/username" target="_blank">
+                    <i class="fab fa-facebook-messenger messenger-icon"></i> 
+                </a>
+            </div>
+        </div>
+
+        <!-- Centered Logo Section -->
+        <div class="footer-section logo-section">
+
+            <h5>© 2015 Lanta A&J Klong Khong Beach </h5>
+        </div>
+
+        <!-- Connect Us Section -->
+        <div class="footer-section connect-us">
+            <h4>Connect Us</h4>
+            <a href="https://www.facebook.com/LantaAJbeachresort/">
+                <i class="fab fa-facebook-f facebook-icon"></i> Lanta A&J Resort
+            </a>
+            <a href="https://www.facebook.com/LantaAJbeachresort/">
+                <i class="fab fa-facebook-f facebook-icon"></i> Jeab's Dining
+            </a>
+        </div>
+    </div>
+</footer>
+    
+        <!-- Additional Sections can be added below as needed -->
+
+    <script src="js/script.js"></script>
+    <script src="js/booking.js"></script>
+    
+
+  
+    
+</body>
+</html>

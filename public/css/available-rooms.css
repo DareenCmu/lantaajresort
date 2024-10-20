@@ -1,0 +1,285 @@
+.room-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    max-width: 1200px; 
+    padding: 0 20px; 
+    position: relative; 
+}
+
+.room-card {
+    display: flex;
+    justify-content: space-between; /* Ensure spacing between image and details */
+    width: 80%;
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.image-container {
+    position: relative;
+    max-width: 300px;
+    margin-right: 20px;
+}
+
+.room-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.room-details {
+    flex: 2;
+    padding-left: 20px;
+}
+
+.room-details h3 {
+    font-size: 1.8rem;
+    margin-top: 1px;
+    margin-bottom: 20px;
+}
+
+.room-details p {
+    margin: 5px 0;
+}
+
+.room-details .room-meta {
+    color: #b8babb; /* Subtle text color for meta info like bed type, room size, etc. */
+    margin-bottom: 20px;
+}
+
+.room-details .price-section {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #a9a9a9;
+}
+
+.amenities {
+    display: flex;
+    flex-direction: row; /* Change to row for smaller screens */
+    flex-wrap: wrap; /* Ensure items can wrap to the next line */
+    justify-content: flex-start; /* Align items to the left */
+    list-style: none;
+    padding: 0;
+    margin: 15px 0; /* Adjust margin for small screens */
+}
+
+.amenities li {
+    width: 50%; /* Ensure two items per row */
+    display: flex; /* Align icon and text on the same line */
+    align-items: center;
+    margin-bottom: 10px; /* Add some spacing between rows */
+}
+
+.amenities li i {
+    margin-right: 10px; /* Space between icon and text */
+}
+
+.offer-section {
+    margin-top: 40px;
+}
+
+.offer-section p {
+    font-weight: bold;
+}
+
+.offer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.offer-section ul li {
+    margin: 5px 0;
+    font-size: 0.9rem; /* Make offer details slightly smaller */
+    color: #6c757d;
+}
+
+/* Ensure the price section and select button stay at the bottom right */
+.price-section {
+    position: absolute;
+    bottom: 20px; /* Distance from the bottom */
+    right: 20px;  /* Distance from the right */
+    text-align: right; /* Align text to the right */
+}
+
+.price-section .price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgb(244, 172, 40);
+}
+
+.select-button {
+    margin-top: 10px;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    background-color: #1d6c7c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.select-button:hover {
+    background-color: #45a049;
+}
+
+
+/* Gallery Button */
+.gallery-button {
+    position: absolute;
+    bottom: 105px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.166);
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-button i {
+    font-size: 1.2rem;
+}
+
+.gallery-button:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-slider {
+    position: relative;
+    max-width: 80%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slides-container {
+    display: flex;
+    overflow: hidden;
+    max-width: 100%;
+    max-height: 80%;
+}
+
+.slides-container img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    font-size: 30px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transform: translateY(-50%);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Responsive Layout for Smaller Screens */
+@media (max-width: 768px) {
+    body {
+        background-color: lightblue; /* To test if the media query is applied */
+    }
+    .offer-section  {
+        text-align: left;
+    }
+    .amenities {
+        display: flex;
+        flex-wrap: wrap; /* Ensures items wrap if necessary */
+        list-style: none;
+        padding: 0;
+        margin: 15px 0;
+    }
+
+    .amenities li {
+        width: 50%; /* Make sure two items fit on each row */
+        box-sizing: border-box; /* Ensure padding/margin don't affect width */
+        display: flex; /* Align icon and text on the same line */
+        align-items: center;
+        padding-right: 10px; /* Add some space between items */
+        margin-bottom: 10px; /* Add spacing between rows */
+    }
+
+    .amenities li i {
+        margin-right: 8px; /* Space between icon and text */
+    }
+
+    .room-card {
+        flex-direction: column;
+        text-align: center; /* Center the text for small screens */
+    }
+
+    .image-container {
+        margin: 0 auto 20px; /* Center the image container */
+        max-width: 100%; /* Ensure the image takes up full width */
+    }
+
+    .room-details {
+        text-align: center;
+        padding: 0 10px; /* Reduce padding on smaller screens */
+    }
+
+    .price-section {
+        text-align: center; /* Center align price section */
+        margin-top: 20px;
+    }
+
+    .select-button {
+        width: 100%; /* Make the select button take full width on smaller screens */
+        padding: 15px; /* Increase padding for easier touch interaction */
+    }
+
+    .gallery-button {
+        position: relative;
+        bottom: 55px; /* Reset positioning for small screens */
+        left: 200px;
+        margin-top: 10px; /* Add margin for spacing */
+        font-size: 12px; /* Adjust button size for small screens */
+    }
+
+    /* Optional: Adjust font sizes */
+    h3 {
+        font-size: 1.5rem; /* Reduce header size */
+    }
+
+    .price {
+        font-size: 1.2rem; /* Adjust price font size */
+    }
+}

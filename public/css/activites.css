@@ -1,0 +1,109 @@
+#explore-section {
+    padding: 50px 0;
+    background-color: #f8f8f8; /* Light background color */
+}
+
+.explore-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Ensures 3 equal columns */
+    gap: 20px; /* Space between cards */
+    padding: 20px;
+}
+
+.explore-card {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.explore-card:hover {
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    border: 2px solid #e69500;
+}
+
+.explore-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.explore-card h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.explore-card p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+
+
+.information-box {
+    background-color: #f9f9f9; /* Soft background color */
+    border: 1px solid #e69500; /* Light border */
+    padding: 40px;
+    margin: 20px 0;
+    border-radius: 10px;
+    max-width: 900px; /* Limit the width to keep it clean */
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Soft shadow for a clean modern look */
+    text-align: center; /* Center the text */
+    margin-top: -30px;
+    margin-bottom: 60px;
+}
+
+.information-box h2 {
+    font-size: 2rem; /* Larger title */
+    color: #0a343c;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.information-box p {
+    font-size: 1.1rem; /* Slightly larger for readability */
+    color: #555;
+    line-height: 1.6; /* Improved line spacing for clarity */
+    max-width: 800px;
+    margin: 0 auto; /* Center the paragraph text */
+}
+.highlight-text-card{
+    color:#38b3cc;
+
+}
+@media (max-width: 768px) {
+    .information-box {
+        padding: 20px; /* Reduce padding on smaller screens */
+    }
+
+    .information-box h2 {
+        font-size: 1.5rem; /* Adjust font size for smaller screens */
+    }
+
+    .information-box p {
+        font-size: 1rem;
+    }
+}
+
+/* Responsive Design: Adjust to 1 or 2 columns for smaller screens */
+@media (max-width: 1024px) {
+    .explore-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .explore-container {
+        grid-template-columns: 1fr; /* 1 column on small screens */
+    }
+}

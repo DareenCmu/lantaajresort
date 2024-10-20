@@ -1,0 +1,162 @@
+#styled-section {
+    padding: 50px 0;
+    background-color: #fff;
+}
+
+.container-room {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
+}
+
+.image-right {
+    flex: 2;
+    max-width: 50%; /* Larger width now on the left */
+    
+}
+
+.image-right img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+   
+}
+
+.text-center {
+    max-width: 390px;
+    
+    margin-left: 20px;
+    text-align: left; /* Align text to the left */
+}
+
+.text-center h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.text-center p {
+    font-size: 1rem;
+    color: #555;
+}
+
+
+/* Right Slideshow container */
+.right-slideshow-container {
+    flex: 2;
+
+    position: relative;
+    margin-left: 180px;
+}
+
+.rightSlide {
+    display: none;
+}
+
+.rightSlide img {
+    width: 100%; /* Let the image take the full width of its container */
+    height: auto; /* Maintain the aspect ratio */
+    max-width: 1200px; /* Increase the maximum width of the image */}
+
+.prev-right, .next-right {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    
+}
+
+.next-right {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev-right:hover, .next-right:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+.highlight-text-rooms{
+    color:#e79806;
+    font-size: 20px;
+}
+
+/* Responsive Design */
+/* Updates for smaller devices */
+@media (max-width: 768px) {
+    .container-room {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center;
+    }
+
+    .text-center {
+        max-width: 100%;
+        margin-top: 20px; /* Add margin to separate the text from the image */
+        padding: 10px;
+        text-align: left; /* Center the text */
+    }
+
+
+    .rightSlide img {
+        width: 100%; /* Ensure the image still scales down appropriately */
+        height: auto; /* Maintain aspect ratio */
+        max-width: none; /* Let the image expand without a max-width */
+    }
+
+    .right-slideshow-container {
+        order: -1; /* Move the image to appear above the text */
+        margin: 0 auto; /* Center the slideshow */
+        width: 100%; /* Allow the image to take up the full width of the container */
+
+    }
+
+
+
+    .next-right {
+        right: -1px; /* Adjust for smaller screen */
+    }
+
+
+}
+
+@media (max-width: 480px) {
+    .text-center h2 {
+        font-size: 1.2rem; /* Slightly smaller text */
+    }
+
+    .text-center p {
+        font-size: 0.85rem; /* Reduce font size */
+    }
+
+    .right-slideshow-container {
+        margin: 0 auto; /* Remove margin issues */
+    }
+
+    .next-right {
+        right: -30px; /* Adjust navigation arrow for smaller screens */
+    }
+}
+
+@media (max-width: 280px) {
+    .right-slideshow-container {
+        width: 100%;
+        margin-right: 10px; /* Keep things centered */
+    }
+
+    .rightSlide img {
+        height: auto; /* Let the image adjust to screen size */
+    }
+
+    .next-right {
+        right: -10px; /* Further adjust navigation arrow */
+    }
+}

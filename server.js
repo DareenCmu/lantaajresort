@@ -51,7 +51,7 @@ app.get('/available-rooms', (req, res) => {
       // Convert the concatenated images to an array
       results = results.map(room => ({
         ...room,
-        images: room.images ? room.images.split(',') : []  // Make sure images are returned as an array
+        images: room.images ? room.images.split(',') : ['/pictures/room/4.jpg']   // Make sure images are returned as an array
       }));
 
       res.json(results);

@@ -13,11 +13,9 @@ app.use(express.static('public'));
 
 // Create connection
 const db = mysql.createConnection({
-<<<<<<< Updated upstream
+
   host: 'auth-db1649.hstgr.io',
-=======
-  host: 'localhost',
->>>>>>> Stashed changes
+
   user: 'u786554873_lantaaj',
   password: '',
   database: 'u786554873_hotel_booking'

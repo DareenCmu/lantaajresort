@@ -4,8 +4,10 @@ const cors = require('cors'); // Import cors
 
 const app = express();
 const corsOptions = {
-  origin: 'https://lantaajresort.com', // Allow requests only from this domain
-  optionsSuccessStatus: 200
+  origin: ['https://lantaajresort.com', 'http://localhost:3000'], // Add other domains if necessary
+  optionsSuccessStatus: 200,
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true, // Enable cookies and credentials
 };
 
 app.use(cors(corsOptions)); // Enable CORS for all routes
@@ -13,11 +15,9 @@ app.use(express.static('public'));
 
 // Create connection
 const db = mysql.createConnection({
-
-  host: 'auth-db1649.hstgr.io',
-
+  host: '193.203.168.147',
   user: 'u786554873_lantaaj',
-  password: '',
+  password: 'Chiangmai1929!',
   database: 'u786554873_hotel_booking'
 });
 

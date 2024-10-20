@@ -47,7 +47,6 @@ function handleDisconnect() {
   });
 }
 
-handleDisconnect();
 
 // Connect to database
 db.connect(err => {

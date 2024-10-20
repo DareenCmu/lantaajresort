@@ -3,13 +3,22 @@ const mysql = require('mysql2');
 const cors = require('cors'); // Import cors
 
 const app = express();
-app.use(cors()); // Enable CORS for all routes
+const corsOptions = {
+  origin: 'https://lantaajresort.com', // Allow requests only from this domain
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions)); // Enable CORS for all routes
 app.use(express.static('public'));
 
 // Create connection
 const db = mysql.createConnection({
+<<<<<<< Updated upstream
+  host: 'auth-db1649.hstgr.io',
+=======
   host: 'localhost',
-  user: 'root',
+>>>>>>> Stashed changes
+  user: 'u786554873_lantaaj',
   password: '',
   database: 'u786554873_hotel_booking'
 });

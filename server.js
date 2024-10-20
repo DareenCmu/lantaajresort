@@ -4,22 +4,50 @@ const cors = require('cors'); // Import cors
 
 const app = express();
 const corsOptions = {
-  origin: ['https://lantaajresort.com', 'http://localhost:3000'], // Add other domains if necessary
-  optionsSuccessStatus: 200,
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true, // Enable cookies and credentials
+  origin: ['https://lantaajresort.com', 'https://lantaajresort.onrender.com'], // Allow your live frontend and backend domains
+  methods: 'GET,POST,PUT,DELETE', // Allow necessary HTTP methods
+  optionsSuccessStatus: 200
 };
 
 app.use(cors(corsOptions)); // Enable CORS for all routes
-//app.use(express.static('public'));
+// Serve static files
+app.use(express.static('public'));
 
 // Create connection
-const db = mysql.createConnection({
-  host: '193.203.168.147',
+const db = mysql.createPool({
+  connectionLimit: 10, // Adjust based on your needs
+  host: 'srv1649.hstgr.io',
   user: 'u786554873_lantaaj',
   password: 'Chiangmai1929!',
   database: 'u786554873_hotel_booking'
 });
+
+function handleDisconnect() {
+  db = mysql.createConnection({
+    host: 'srv1649.hstgr.io',
+    user: 'u786554873_lantaaj',
+    password: 'Chiangmai1929!',
+    database: 'u786554873_hotel_booking'
+  });
+
+  db.connect(err => {
+    if (err) {
+      console.log('Error when connecting to MySQL:', err);
+      setTimeout(handleDisconnect, 2000); // Reconnect after 2 seconds
+    }
+  });
+
+  db.on('error', err => {
+    console.log('MySQL error', err);
+    if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+      handleDisconnect(); // Reconnect if connection is lost
+    } else {
+      throw err;
+    }
+  });
+}
+
+handleDisconnect();
 
 // Connect to database
 db.connect(err => {
@@ -43,20 +71,21 @@ app.get('/available-rooms', (req, res) => {
             WHERE (check_in < ? AND check_out > ?)
         )
       GROUP BY rooms.id
-  `;
+  `});
 
   db.query(query, [checkout, checkin], (err, results) => {
-      if (err) throw err;
-
-      // Convert the concatenated images to an array
-      results = results.map(room => ({
-        ...room,
-        images: room.images ? room.images.split(',') : ['/pictures/room/4.jpg']   // Make sure images are returned as an array
-      }));
-
-      res.json(results);
+    if (err) {
+      if (err.fatal) {
+        console.error('Fatal error: connection lost:', err);
+        handleDisconnect(); // Attempt reconnection
+      } else {
+        throw err;
+      }
+    }
+  
+    res.json(results);
   });
-});
+  
 
 
 

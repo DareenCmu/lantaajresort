@@ -11,7 +11,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions)); // Enable CORS for all routes
-app.use(express.static('public'));
+//app.use(express.static('public'));
 
 // Create connection
 const db = mysql.createConnection({

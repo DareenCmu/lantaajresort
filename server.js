@@ -48,7 +48,6 @@ function handleDisconnect() {
 }
 
 
-
 // Connect to database
 db.connect(err => {
   if (err) {

@@ -13,47 +13,13 @@ app.use(cors(corsOptions)); // Enable CORS for all routes
 // Serve static files
 app.use(express.static('public'));
 
-// Create connection
+// Create connection pool
 const db = mysql.createPool({
   connectionLimit: 10, // Adjust based on your needs
   host: 'srv1649.hstgr.io',
   user: 'u786554873_lantaaj',
   password: 'Chiangmai1929!',
   database: 'u786554873_hotel_booking'
-});
-
-function handleDisconnect() {
-  db = mysql.createConnection({
-    host: 'srv1649.hstgr.io',
-    user: 'u786554873_lantaaj',
-    password: 'Chiangmai1929!',
-    database: 'u786554873_hotel_booking'
-  });
-
-  db.connect(err => {
-    if (err) {
-      console.log('Error when connecting to MySQL:', err);
-      setTimeout(handleDisconnect, 2000); // Reconnect after 2 seconds
-    }
-  });
-
-  db.on('error', err => {
-    console.log('MySQL error', err);
-    if (err.code === 'PROTOCOL_CONNECTION_LOST') {
-      handleDisconnect(); // Reconnect if connection is lost
-    } else {
-      throw err;
-    }
-  });
-}
-
-
-// Connect to database
-db.connect(err => {
-  if (err) {
-    throw err;
-  }
-  console.log('MySQL Connected...');
 });
 
 // Create a route to fetch available rooms
@@ -70,23 +36,23 @@ app.get('/available-rooms', (req, res) => {
             WHERE (check_in < ? AND check_out > ?)
         )
       GROUP BY rooms.id
-  `});
+  `;
 
   db.query(query, [checkout, checkin], (err, results) => {
     if (err) {
-      if (err.fatal) {
-        console.error('Fatal error: connection lost:', err);
-        handleDisconnect(); // Attempt reconnection
-      } else {
-        throw err;
-      }
+      console.error('Error executing query:', err);
+      return res.status(500).json({ error: 'Database query error' });
     }
-  
+
+    // Convert the concatenated images to an array
+    results = results.map(room => ({
+      ...room,
+      images: room.images ? room.images.split(',') : []  // Make sure images are returned as an array
+    }));
+
     res.json(results);
   });
-  
-
-
+});
 
 const PORT = 4000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -145,10 +145,12 @@ showRightSlides(rightSlideIndex);
 
 function plusRightSlides(n) {
     showRightSlides(rightSlideIndex += n);
+    console.log("Right side");
 }
 
 function currentRightSlide(n) {
     showRightSlides(rightSlideIndex = n);
+    console.log("Left side");
 }
 
 function showRightSlides(n) {

@@ -4,31 +4,22 @@ const cors = require('cors'); // Import cors
 
 const app = express();
 const corsOptions = {
-  origin: 'https://lantaajresort.com', // Allow requests only from this domain
+  origin: ['https://lantaajresort.com', 'https://lantaajresort.onrender.com'], // Allow your live frontend and backend domains
+  methods: 'GET,POST,PUT,DELETE', // Allow necessary HTTP methods
   optionsSuccessStatus: 200
 };
 
 app.use(cors(corsOptions)); // Enable CORS for all routes
+// Serve static files
 app.use(express.static('public'));
 
-// Create connection
-const db = mysql.createConnection({
-<<<<<<< Updated upstream
-  host: 'auth-db1649.hstgr.io',
-=======
-  host: 'localhost',
->>>>>>> Stashed changes
+// Create connection pool
+const db = mysql.createPool({
+  connectionLimit: 10, // Adjust based on your needs
+  host: 'srv1649.hstgr.io',
   user: 'u786554873_lantaaj',
-  password: '',
+  password: 'Chiangmai1929!',
   database: 'u786554873_hotel_booking'
-});
-
-// Connect to database
-db.connect(err => {
-  if (err) {
-    throw err;
-  }
-  console.log('MySQL Connected...');
 });
 
 // Create a route to fetch available rooms
@@ -48,19 +39,20 @@ app.get('/available-rooms', (req, res) => {
   `;
 
   db.query(query, [checkout, checkin], (err, results) => {
-      if (err) throw err;
+    if (err) {
+      console.error('Error executing query:', err);
+      return res.status(500).json({ error: 'Database query error' });
+    }
 
-      // Convert the concatenated images to an array
-      results = results.map(room => ({
-        ...room,
-        images: room.images ? room.images.split(',') : []  // Make sure images are returned as an array
-      }));
+    // Convert the concatenated images to an array
+    results = results.map(room => ({
+      ...room,
+      images: room.images ? room.images.split(',') : []  // Make sure images are returned as an array
+    }));
 
-      res.json(results);
+    res.json(results);
   });
 });
-
-
 
 const PORT = 4000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

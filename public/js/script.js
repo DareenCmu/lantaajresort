@@ -1,7 +1,7 @@
 // JavaScript to toggle the side menu
 document.getElementById('hamburgerMenu').addEventListener('click', function() {
     document.getElementById('sideMenu').style.right = '0';
-    console.error("WOOOW.");
+   
 });
 
 document.getElementById('closeBtn').addEventListener('click', function() {
@@ -61,6 +61,7 @@ function showSlides(n) {
     }
 
     // Check the value of slideIndex before using it
+    console.error("WOOOW.");
     console.log("Current slideIndex: ", slideIndex);
 
     // Only try to access the slide and dot if they exist

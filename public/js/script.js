@@ -61,7 +61,7 @@ function showSlides(n) {
     }
 
     // Check the value of slideIndex before using it
-    console.error("WOOOW.");
+     console.log("WOW.");
     console.log("Current slideIndex: ", slideIndex);
 
     // Only try to access the slide and dot if they exist

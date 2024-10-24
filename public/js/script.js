@@ -1,6 +1,7 @@
 // JavaScript to toggle the side menu
 document.getElementById('hamburgerMenu').addEventListener('click', function() {
     document.getElementById('sideMenu').style.right = '0';
+    console.error("WOOOW.");
 });
 
 document.getElementById('closeBtn').addEventListener('click', function() {

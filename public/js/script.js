@@ -30,6 +30,7 @@ function showSlides(n) {
 
     console.log("Slides: ", slides); // Check if slides are found
     console.log("Dots: ", dots);     // Check if dots are found
+    console.log("just want to check");
 
     // Ensure there are slides and dots available
     if (slides.length === 0) {

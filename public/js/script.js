@@ -30,6 +30,7 @@ function showSlides(n) {
 
     console.log("Slides: ", slides); // Check if slides are found
     console.log("Dots: ", dots);     // Check if dots are found
+    console.log("WOw!");
 
     // Ensure there are slides and dots available
     if (slides.length === 0) {
@@ -145,10 +146,12 @@ showRightSlides(rightSlideIndex);
 
 function plusRightSlides(n) {
     showRightSlides(rightSlideIndex += n);
+    console.log("Right");
 }
 
 function currentRightSlide(n) {
     showRightSlides(rightSlideIndex = n);
+    console.log("Left");
 }
 
 function showRightSlides(n) {

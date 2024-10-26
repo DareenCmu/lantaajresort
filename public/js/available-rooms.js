@@ -36,6 +36,7 @@ function fetchAvailableRooms(checkin, checkout, adults, childs) {
                 const roomCard = document.createElement('div');
                 roomCard.className = 'room-card';
                 // Use the first image as the main image on the room card
+                const imageUrls = room.images ? room.images.split(',') : [];
                 const firstImage = room.images.length > 0 ? room.images[0] : '/pictures/logoaj.jpg';
                 roomCard.innerHTML = `
                 <div class="image-container">
@@ -91,7 +92,7 @@ function fetchAvailableRooms(checkin, checkout, adults, childs) {
 
                 // Attach event listener to the Gallery button
                 const galleryButton = roomCard.querySelector('.gallery-button');
-                galleryButton.addEventListener('click', () => openGallery(room.images));
+                galleryButton.addEventListener('click', () => openGallery(imageUrls));
 
                 roomList.appendChild(roomCard);
             });

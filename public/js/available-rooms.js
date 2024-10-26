@@ -26,7 +26,7 @@ function fetchAvailableRooms(checkin, checkout, adults, childs) {
         console.log('Fetched Data:', data); // Debugging line
         const roomList = document.getElementById('room-list');
         // Ensure it picks up the images from the available room
-        const firstImage = room.images.length > 0 ? room.images[0] : '/pictures/logoaj.jpg';
+        
         roomList.innerHTML = ''; // Clear previous results
         if (data.length === 0) {
             roomList.innerHTML = '<p>No available rooms for the selected dates.</p>';
@@ -35,7 +35,7 @@ function fetchAvailableRooms(checkin, checkout, adults, childs) {
                 console.log('Room Images:', room.images); // Debugging line
                 const roomCard = document.createElement('div');
                 roomCard.className = 'room-card';
-
+                const firstImage = room.images.length > 0 ? room.images[0] : '/pictures/logoaj.jpg';
                 roomCard.innerHTML = `
                 <div class="image-container">
                     <img src="${firstImage}" alt="Room Image" class="room-image" />

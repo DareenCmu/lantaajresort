@@ -60,6 +60,7 @@ function fetchAvailableRooms(checkin, checkout, adults, childs) {
                         </ul>
                     </div>
                     <div class="price-section">
+                    <p>Number of Room</p>
                         <label for="room-count-${room.room_type.replace(/\s+/g, '-')}">Number of Rooms:</label>
                         <select id="room-count-${room.room_type.replace(/\s+/g, '-')}" class="room-select">
                             <option value="1">1 Room</option>

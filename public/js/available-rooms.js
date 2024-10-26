@@ -35,10 +35,10 @@ function fetchAvailableRooms(checkin, checkout, adults, childs) {
                 console.log('Room Images:', room.images); // Debugging line
                 const roomCard = document.createElement('div');
                 roomCard.className = 'room-card';
-                const firstImage = room.images.length > 0 ? room.images[0] : '/pictures/logoaj.jpg';
+                const imageUrl = room.image_url ? room.image_url : '/pictures/logoaj.jpg';
                 roomCard.innerHTML = `
                 <div class="image-container">
-                    <img src="${firstImage}" alt="Room Image" class="room-image" />
+                    <img src="${imageUrl}" alt="Room Image" class="room-image" />
                     <button class="gallery-button">
                         <i class="fa fa-images"></i> 
                     </button>

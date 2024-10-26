@@ -32,24 +32,7 @@
     font-size: 20px;
 }
 
-/* Beachfront Slideshow container */
-.beachfront-slideshow-container {
-    flex: 2;
-    max-width: 50%;
-    position: relative;
-    margin-left: 180px;
-    overflow: hidden;
-}
 
-.beachfrontSlide {
-    display: none;
-}
-
-.beachfrontSlide img {
-    width: 800px;
-    height: 500px;
-    border-radius: 10px;
-}
 /* Right Slideshow container */
 .right-slideshow-container2 {
     flex: 2;

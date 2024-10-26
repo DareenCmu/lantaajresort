@@ -27,16 +27,16 @@ app.get('/available-rooms', (req, res) => {
   const { checkin, checkout } = req.query;
 
   const query = `
-      SELECT rooms.*, GROUP_CONCAT(images.image_url) AS images
-      FROM rooms
-      LEFT JOIN images ON rooms.id = images.room_id
-      WHERE rooms.is_available = 1
-        AND rooms.id NOT IN (
-            SELECT room_id FROM bookings 
-            WHERE (check_in < ? AND check_out > ?)
-        )
-      GROUP BY rooms.id
-  `;
+  SELECT rooms.room_type, rooms.price, rooms.description, GROUP_CONCAT(images.image_url) AS images, COUNT(rooms.id) AS available_rooms
+  FROM rooms
+  LEFT JOIN images ON rooms.id = images.room_id
+  WHERE rooms.is_available = 1
+    AND rooms.id NOT IN (
+        SELECT room_id FROM bookings 
+        WHERE (check_in < ? AND check_out > ?)
+    )
+  GROUP BY rooms.room_type
+`;
 
   db.query(query, [checkout, checkin], (err, results) => {
     if (err) {

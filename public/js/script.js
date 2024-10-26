@@ -7,75 +7,75 @@ document.getElementById('closeBtn').addEventListener('click', function() {
     document.getElementById('sideMenu').style.right = '-250px';
 });
 
-let slideIndex = 1;
-showSlides(slideIndex);
+document.addEventListener('DOMContentLoaded', function() {
+    let slideIndex = 1;
+    let slideInterval;
 
-// Automatic slide change every 3 seconds
-setInterval(function() {
-    plusSlides(1);
-}, 3000); // 3000 milliseconds = 3 seconds
-
-function plusSlides(n) {
-    showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-    showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-    let i;
+    // Get the slides and dots elements
     let slides = document.getElementsByClassName("mySlides");
     let dots = document.getElementsByClassName("dot");
 
-    console.log("Slides: ", slides); // Check if slides are found
-    console.log("Dots: ", dots);     // Check if dots are found
-    console.log("WOw!");
-
-    // Ensure there are slides and dots available
+    // Ensure there are slides and dots available, if not, exit the script and stop the interval
     if (slides.length === 0) {
-        console.error("No slides available.");
+        console.error("No slides available. Exiting slideshow script.");
         return;
     }
 
     if (dots.length === 0) {
-        console.error("No dots available.");
+        console.error("No dots available. Exiting slideshow script.");
         return;
     }
 
-    if (n > slides.length) { 
-        slideIndex = 1;
-    }
-    if (n < 1) { 
-        slideIndex = slides.length; 
+    // Show the first slide
+    showSlides(slideIndex);
+
+    // Automatic slide change every 3 seconds, but store the interval so we can clear it later
+    slideInterval = setInterval(function() {
+        plusSlides(1);
+    }, 3000); // 3000 milliseconds = 3 seconds
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
     }
 
-    // Hide all slides
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";  
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
     }
 
-    // Remove "active" class from all dots
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
+    function showSlides(n) {
+        let i;
+
+        // If n is greater than the number of slides, reset to the first slide
+        if (n > slides.length) {
+            slideIndex = 1;
+        }
+        // If n is less than 1, set to the last slide
+        if (n < 1) {
+            slideIndex = slides.length;
+        }
+
+        // Hide all slides
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+
+        // Remove "active" class from all dots
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+
+        // Show the current slide and activate the corresponding dot
+        if (slides[slideIndex - 1]) {
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        } else {
+            console.error("No slides available, stopping the slideshow.");
+            clearInterval(slideInterval); // Stop the slideshow if no slides are available
+        }
     }
 
-    // Check the value of slideIndex before using it
-    console.log("Current slideIndex: ", slideIndex);
-
-    // Only try to access the slide and dot if they exist
-    if (slides[slideIndex - 1]) {
-        slides[slideIndex - 1].style.display = "block";
-    } else {
-        console.error("Slide index out of bounds");
-    }
-
-    if (dots[slideIndex - 1]) {
-        dots[slideIndex - 1].className += " active";
-    } else {
-        console.error("Dot index out of bounds");
-    }
-}
+    
+});
 
 
 
@@ -140,40 +140,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-// events
-let rightSlideIndex = 1;
-showRightSlides(rightSlideIndex);
-
-function plusRightSlides(n) {
-    showRightSlides(rightSlideIndex += n);
-    console.log("Right");
-}
-
-function currentRightSlide(n) {
-    showRightSlides(rightSlideIndex = n);
-    console.log("Left");
-}
-
-function showRightSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("rightSlide");
-    
-    if (n > slides.length) {rightSlideIndex = 1}
-    if (n < 1) {rightSlideIndex = slides.length}
-    
-    // Hide all slides
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";  
-    }
-    
-    // Show the current slide
-    if (slides.length > 0) {
-        slides[0].style.display = "block"; // Example of accessing the first slide
-    } else {
-        console.log("No slides found");
-    }
-    
-}
 
 document.addEventListener("DOMContentLoaded", function() {
     // Get today's date in yyyy-mm-dd format

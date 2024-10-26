@@ -66,8 +66,9 @@ function fetchAvailableRooms(checkin, checkout,adults,childs) {
                     </div>
             
                     <div class="price-section">
+                        console.log('Rendering room card:', room.room_type);
                         <label for="room-count">Number of Rooms:</label>
-                        <input type="number" id="room-count-${room.room_type}" min="1" max="${room.available_rooms}" value="1" />
+                        <input type="number" id="room-count-${room.room_type.replace(/\s+/g, '-')}" min="1" max="${room.available_rooms}" value="1" />
                         <p>1 night, 1 person</p>
                         <p class="price">THB ${room.price}</p>
                         <button class="select-button">Select</button>
@@ -77,7 +78,7 @@ function fetchAvailableRooms(checkin, checkout,adults,childs) {
                  // Attach event listener to the Select button
                 const selectButton = roomCard.querySelector('.select-button');
                 selectButton.addEventListener('click', () => {
-                    const roomCount = document.getElementById(`room-count-${room.room_type}`).value;
+                    const roomCount = document.getElementById(`room-count-${room.room_type.replace(/\s+/g, '-')}`).value;
                     if (roomCount > room.available_rooms) {
                       alert('Not enough rooms available.');
                     } else {

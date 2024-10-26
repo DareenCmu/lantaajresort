@@ -36,7 +36,7 @@ function fetchAvailableRooms(checkin, checkout, adults, childs) {
                 const roomCard = document.createElement('div');
                 roomCard.className = 'room-card';
                 // Use the first image as the main image on the room card
-                const imageUrls = room.images ? room.images.split(',') : [];
+                const imageUrls = Array.isArray(room.images) ? room.images : [];
                 const firstImage = room.images.length > 0 ? room.images[0] : '/pictures/logoaj.jpg';
                 roomCard.innerHTML = `
                 <div class="image-container">

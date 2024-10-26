@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     let checkin = urlParams.get('checkin');
     let checkout = urlParams.get('checkout');
-    let adults = urlParams.get('adults');  // Get the number of adults from URL
-    let childs = urlParams.get('childs');  // Get the number of adults from URL
+    let adults = urlParams.get('adults'); // Get the number of adults from URL
+    let childs = urlParams.get('childs'); // Get the number of children from URL
 
     // Set default dates if they are not provided in the query string
     const today = new Date().toISOString().split('T')[0];
@@ -15,28 +15,25 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('checkin').value = checkin;
     document.getElementById('checkout').value = checkout;
 
-
-
-    
-
-    fetchAvailableRooms(checkin, checkout,adults,childs);
+    fetchAvailableRooms(checkin, checkout, adults, childs);
 });
 
-function fetchAvailableRooms(checkin, checkout,adults,childs) {
+function fetchAvailableRooms(checkin, checkout, adults, childs) {
     // Pass checkin and checkout as query parameters in the fetch request
     fetch(`https://lantaajresort.onrender.com/available-rooms?checkin=${checkin}&checkout=${checkout}&adults=${adults}&childs=${childs}`)
     .then(response => response.json())
     .then(data => {
-        console.log('Fetched Data:', data);  // Debugging line
+        console.log('Fetched Data:', data); // Debugging line
         const roomList = document.getElementById('room-list');
         roomList.innerHTML = ''; // Clear previous results
         if (data.length === 0) {
             roomList.innerHTML = '<p>No available rooms for the selected dates.</p>';
         } else {
             data.forEach(room => {
-                console.log('Room Images:', room.images);  // Debugging line
+                console.log('Room Images:', room.images); // Debugging line
                 const roomCard = document.createElement('div');
                 roomCard.className = 'room-card';
+
                 roomCard.innerHTML = `
                 <div class="image-container">
                     <img src="${room.image_url}" alt="Room Image" class="room-image" />
@@ -52,10 +49,8 @@ function fetchAvailableRooms(checkin, checkout,adults,childs) {
                 </div>
                 <div class="room-details">
                     <h3>${room.room_type}</h3>
-                    <p class="room-meta">Sleeps 2 | 1 King Bed 
+                    <p class="room-meta">Sleeps 2 | 1 King Bed</p>
                     <p>${room.description}</p>
-                   
-            
                     <div class="offer-section">
                         <p><strong>ROOM ONLY DEAL </strong></p>
                         <ul>
@@ -64,36 +59,32 @@ function fetchAvailableRooms(checkin, checkout,adults,childs) {
                             <li><i class="fas fa-credit-card"></i> Pay Now</li>
                         </ul>
                     </div>
-            
                     <div class="price-section">
-                        console.log('Rendering room card:', room.room_type);
-                        <label for="room-count">Number of Rooms:</label>
+                        <label for="room-count-${room.room_type.replace(/\s+/g, '-')}">Number of Rooms:</label>
                         <input type="number" id="room-count-${room.room_type.replace(/\s+/g, '-')}" min="1" max="${room.available_rooms}" value="1" />
                         <p>1 night, 1 person</p>
                         <p class="price">THB ${room.price}</p>
                         <button class="select-button">Select</button>
                     </div>
                 </div>
-            `;
-                 // Attach event listener to the Select button
+                `;
+
+                // Attach event listener to the Select button
                 const selectButton = roomCard.querySelector('.select-button');
                 selectButton.addEventListener('click', () => {
                     const roomCount = document.getElementById(`room-count-${room.room_type.replace(/\s+/g, '-')}`).value;
                     if (roomCount > room.available_rooms) {
-                      alert('Not enough rooms available.');
+                        alert('Not enough rooms available.');
                     } else {
-                    // Redirect to confirm.html with room details as query parameters
-                    window.location.href = `confirm.html?room_type=${encodeURIComponent(room.room_type)}&price=${room.price}&checkin=${checkin}&checkout=${checkout}&adults=${adults}&childs=${childs}`;
+                        // Redirect to confirm.html with room details as query parameters
+                        window.location.href = `confirm.html?room_type=${encodeURIComponent(room.room_type)}&price=${room.price}&checkin=${checkin}&checkout=${checkout}&adults=${adults}&childs=${childs}&room_count=${roomCount}`;
                     }
                 });
 
-                roomList.appendChild(roomCard);
-            
-                
                 // Attach event listener to the Gallery button
                 const galleryButton = roomCard.querySelector('.gallery-button');
                 galleryButton.addEventListener('click', () => openGallery(room.images));
-    
+
                 roomList.appendChild(roomCard);
             });
         }
@@ -106,7 +97,7 @@ function fetchAvailableRooms(checkin, checkout,adults,childs) {
 
 // Open the gallery modal with multiple images
 function openGallery(imageUrls) {
-    console.log('Image URLs:', imageUrls);  // Verify the array is received correctly
+    console.log('Image URLs:', imageUrls); // Verify the array is received correctly
 
     const modal = document.getElementById('galleryModal');
     const slidesContainer = document.getElementById('slidesContainer');

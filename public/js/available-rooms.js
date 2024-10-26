@@ -61,7 +61,11 @@ function fetchAvailableRooms(checkin, checkout, adults, childs) {
                     </div>
                     <div class="price-section">
                         <label for="room-count-${room.room_type.replace(/\s+/g, '-')}">Number of Rooms:</label>
-                        <input type="number" id="room-count-${room.room_type.replace(/\s+/g, '-')}" min="1" max="${room.available_rooms}" value="1" />
+                        <select id="room-count-${room.room_type.replace(/\s+/g, '-')}" class="room-select">
+                            <option value="1">1 Room</option>
+                            <option value="2">2 Rooms</option>
+                            <option value="3">3 Rooms</option>
+                        </select>
                         <p>1 night, 1 person</p>
                         <p class="price">THB ${room.price}</p>
                         <button class="select-button">Select</button>

@@ -27,7 +27,7 @@ app.get('/available-rooms', (req, res) => {
   const { checkin, checkout } = req.query;
 
   const query = `
-    SELECT rooms.room_type, rooms.price, rooms.description, MIN(images.image_url) AS image_url, COUNT(rooms.id) AS available_rooms
+    SELECT room_type, MIN(rooms.price) as price, GROUP_CONCAT(DISTINCT images.image_url) AS images, COUNT(rooms.id) AS available_rooms, rooms.description
     FROM rooms
     LEFT JOIN images ON rooms.id = images.room_id
     WHERE rooms.is_available = 1
@@ -36,6 +36,7 @@ app.get('/available-rooms', (req, res) => {
           WHERE (check_in < ? AND check_out > ?)
       )
     GROUP BY rooms.room_type
+    ORDER BY rooms.room_type;
 `;
 
   db.query(query, [checkout, checkin], (err, results) => {

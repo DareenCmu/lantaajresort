@@ -35,7 +35,7 @@ app.get('/available-rooms', (req, res) => {
           SELECT room_id FROM bookings 
           WHERE (check_in < ? AND check_out > ?)
       )
-    GROUP BY rooms.room_type , rooms.id 
+    GROUP BY rooms.room_type 
     ORDER BY rooms.room_type;
 `;
 

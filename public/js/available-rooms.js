@@ -81,8 +81,9 @@ function fetchAvailableRooms(checkin, checkout, adults, childs) {
                 selectButton.addEventListener('click', () => {
                     const roomCount = parseInt(document.getElementById(`room-count-${room.room_type.replace(/\s+/g, '-')}`).value, 10);
 
-                    console.log('Available Rooms:', room.available_rooms);
-                    console.log('Selected Rooms:', roomCount);                 
+                        // Log the room count selected for debugging
+                        console.log(`Selected Rooms: ${roomCount}`);
+                        console.log(`Available Rooms for ${room.room_type}: ${room.available_rooms}`);             
                     if (roomCount > room.available_rooms) {
                         alert('Not enough rooms available for the selected dates.');
                     } else {

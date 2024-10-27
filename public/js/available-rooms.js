@@ -65,12 +65,10 @@ function fetchAvailableRooms(checkin, checkout, adults, childs) {
                     </div>
                     <div class="price-section">
                     <p>Number of Room</p>
-                        <label for="room-count-${room.room_type.replace(/\s+/g, '-')}">Number of Rooms:</label>
-                        <select id="room-count-${room.room_type.replace(/\s+/g, '-')}" class="room-select">
-                            <option value="1">1 Room</option>
-                            <option value="2">2 Rooms</option>
-                            <option value="3">3 Rooms</option>
-                        </select>
+            <label for="room-count-${room.room_type.replace(/\s+/g, '-')}" class="room-count-label">Number of Rooms:</label>
+            <select id="room-count-${room.room_type.replace(/\s+/g, '-')}" class="room-count-select">
+                ${[...Array(Math.min(3, room.available_rooms)).keys()].map(i => `<option value="${i + 1}">${i + 1} Room${i > 0 ? 's' : ''}</option>`).join('')}
+            </select>
                         <p>1 night, 1 person</p>
                         <p class="price">THB ${room.price}</p>
                         <button class="select-button">Select</button>
@@ -81,7 +79,7 @@ function fetchAvailableRooms(checkin, checkout, adults, childs) {
                 // Attach event listener to the Select button
                 const selectButton = roomCard.querySelector('.select-button');
                 selectButton.addEventListener('click', () => {
-                    const roomCount = document.getElementById(`room-count-${room.room_type.replace(/\s+/g, '-')}`).value;
+                    const roomCount = document.getElementById(`room-count-${room.room_type.replace(/\s+/g, '-')}`).value;                    
                     if (roomCount > room.available_rooms) {
                         alert('Not enough rooms available for the selected dates.');
                     } else {

@@ -57,33 +57,39 @@ app.get('/available-rooms', (req, res) => {
 app.get('/check-room-availability', (req, res) => {
   const { roomType, checkin, checkout, roomCount } = req.query;
 
-  console.log('Incoming parameters:', { roomType, checkin, checkout, roomCount });
+  // Convert roomCount to an integer
+  const count = parseInt(roomCount, 10);
+
+  // Log parameters for debugging
+  console.log('Parameters:', { roomType, checkin, checkout, count });
 
   const query = `
-    SELECT rooms.id, rooms.room_number, rooms.room_type
-    FROM rooms
-    LEFT JOIN bookings ON rooms.id = bookings.room_id
-    WHERE rooms.room_type = ?
-      AND rooms.is_available = 1
-      AND (bookings.id IS NULL 
-           OR bookings.check_out <= ? 
-           OR bookings.check_in >= ?)
-    ORDER BY rooms.room_number
-    LIMIT ?;
+      SELECT rooms.id, rooms.room_number, rooms.room_type
+      FROM rooms
+      LEFT JOIN bookings ON rooms.id = bookings.room_id
+      WHERE rooms.room_type = ?
+        AND rooms.is_available = 1
+        AND (bookings.id IS NULL 
+             OR bookings.check_out <= ? 
+             OR bookings.check_in >= ?)
+      ORDER BY rooms.room_number
+      LIMIT ?;
   `;
 
-  db.query(query, [roomType, checkin, checkout, roomCount], (error, results) => {
+  db.query(query, [roomType, checkin, checkout, count], (error, results) => {
     if (error) {
-        console.error('Error executing query:', error.message);
-        res.status(500).json({ message: 'Error checking availability', error: error.message });
-    } else {
-        if (results.length < roomCount) {
-            res.json({ available: false, availableRooms: results.length });
-        } else {
-            res.json({ available: true, rooms: results });
-        }
-    }
+      console.error('Error executing query:', error);
+      console.error('Query Parameters:', { roomType, checkin, checkout, roomCount });
+      res.status(500).json({ message: 'Error checking availability', details: error.message });
+  } else {
+          if (results.length < count) {
+              res.json({ available: false, availableRooms: results.length });
+          } else {
+              res.json({ available: true, rooms: results });
+          }
+      }
+  });
 });
-});
+
 const PORT = 4000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

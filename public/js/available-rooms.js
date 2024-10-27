@@ -78,7 +78,7 @@ function fetchAvailableRooms(checkin, checkout, adults, childs) {
                 `;
 
                 // Attach event listener to the Select button
-                const selectButton = roomCard.querySelector('.select-button');
+                const selectButton = roomCard.querySelector('.select-button'); 
                 // Log the available rooms
                 console.log(`Available Rooms for ${room.room_type} : ${room.available_rooms}`);
                 selectButton.addEventListener('click', () => {

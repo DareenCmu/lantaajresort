@@ -27,7 +27,7 @@ app.get('/available-rooms', (req, res) => {
   const { checkin, checkout } = req.query;
 
   const query = `
-    SELECT room_type, MIN(rooms.price) AS price, GROUP_CONCAT(DISTINCT images.image_url) AS images, COUNT(DISTINCT rooms.id) AS available_rooms,  rooms.description
+    SELECT room_type, MIN(rooms.price) AS price, GROUP_CONCAT(images.image_url) AS images, COUNT(rooms.id) AS available_rooms,  rooms.description
     FROM rooms
     LEFT JOIN images ON rooms.id = images.room_id
     WHERE rooms.is_available = 1

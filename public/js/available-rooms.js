@@ -32,6 +32,7 @@ function fetchAvailableRooms(checkin, checkout, adults, childs) {
             roomList.innerHTML = '<p>No available rooms for the selected dates.</p>';
         } else {
             data.forEach(room => {
+                console.log(`Available Rooms for ${room.room_type} : ${room.available_rooms}`);
                 console.log('Room Images:', room.images); // Debugging line
                 const roomCard = document.createElement('div');
                 roomCard.className = 'room-card';

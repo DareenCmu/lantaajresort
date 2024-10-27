@@ -52,9 +52,10 @@ if (price) {
 if (room_type) {
     document.querySelector('.room_type_name').textContent = room_type;
 }
-if(room_count){
-    document.querySelector('.room_count').textContent = room_count;
+if (room_count) {
+    document.querySelector('.room_count').textContent = `${room_count} Rooms`;
 }
+
 // Update the Adults and Children in the booking total section
 if (adults) {
     document.querySelector('.adults').textContent = `${adults} Adults, ${childs} Children`;

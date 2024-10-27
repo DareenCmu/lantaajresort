@@ -73,6 +73,7 @@ app.get('/check-room-availability', (req, res) => {
   `;
 
   db.query(query, [roomType, checkin, checkout, roomCount], (error, results) => {
+
       if (error) {
           console.error('Error executing query:', error);
           return res.status(500).json({ message: 'Error checking availability', error: error.message });

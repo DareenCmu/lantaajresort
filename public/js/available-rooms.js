@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Add the checkRoomAvailability function here
 async function checkRoomAvailability(roomType, checkin, checkout, roomCount) {
     try {
-        const response = await fetch(`/check-room-availability?roomType=${encodeURIComponent(roomType)}&checkin=${encodeURIComponent(checkin)}&checkout=${encodeURIComponent(checkout)}&roomCount=${encodeURIComponent(roomCount)}`);
+        const response = await fetch(`https://lantaajresort.onrender.com/check-room-availability?roomType=${encodeURIComponent(roomType)}&checkin=${encodeURIComponent(checkin)}&checkout=${encodeURIComponent(checkout)}&roomCount=${encodeURIComponent(roomCount)}`);
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }

@@ -17,6 +17,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     fetchAvailableRooms(checkin, checkout, adults, childs);
 });
+// Add the checkRoomAvailability function here
+async function checkRoomAvailability(roomType, checkin, checkout, roomCount) {
+    try {
+        const response = await fetch(`/check-room-availability?roomType=${encodeURIComponent(roomType)}&checkin=${encodeURIComponent(checkin)}&checkout=${encodeURIComponent(checkout)}&roomCount=${encodeURIComponent(roomCount)}`);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching room availability:', error);
+        throw error;
+    }
+}
 
 function fetchAvailableRooms(checkin, checkout, adults, childs) {
     // Pass checkin and checkout as query parameters in the fetch request
@@ -83,16 +96,24 @@ function fetchAvailableRooms(checkin, checkout, adults, childs) {
                 console.log(`Available Rooms for ${room.room_type} : ${room.available_rooms}`);
                 selectButton.addEventListener('click', () => {
                     const roomCount = parseInt(document.getElementById(`room-count-${room.room_type.replace(/\s+/g, '-')}`).value, 10);
-
-                        // Log the room count selected for debugging
-                        console.log(`Selected Rooms: ${roomCount}`);
-                                  
-                    if (roomCount > room.available_rooms) {
-                        alert('Not enough rooms available for the selected dates.');
-                    } else {
-                        // Redirect to confirm.html with room details as query parameters
-                        window.location.href = `confirm.html?room_type=${encodeURIComponent(room.room_type)}&price=${room.price}&checkin=${checkin}&checkout=${checkout}&adults=${adults}&childs=${childs}&room_count=${roomCount}`;
-                    }
+                
+                    // Log the room count selected for debugging
+                    console.log(`Selected Rooms: ${roomCount}`);
+                
+                    // Check room availability before proceeding
+                    checkRoomAvailability(room.room_type, checkin, checkout, roomCount)
+                        .then(response => {
+                            if (response.available) {
+                                // Redirect to confirm.html with room details as query parameters
+                                window.location.href = `confirm.html?room_type=${encodeURIComponent(room.room_type)}&price=${room.price}&checkin=${checkin}&checkout=${checkout}&adults=${adults}&childs=${childs}&room_count=${roomCount}`;
+                            } else {
+                                alert(`Not enough rooms available. Only ${response.availableRooms} rooms are available.`);
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error checking availability:', error);
+                            alert('An error occurred while checking room availability. Please try again later.');
+                        });
                 });
 
                 // Attach event listener to the Gallery button

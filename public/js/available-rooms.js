@@ -17,19 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     fetchAvailableRooms(checkin, checkout, adults, childs);
 });
-// Add the checkRoomAvailability function here
-async function checkRoomAvailability(roomType, checkin, checkout, roomCount) {
-    try {
-        const response = await fetch(`https://lantaajresort.onrender.com/check-room-availability?roomType=${encodeURIComponent(roomType)}&checkin=${encodeURIComponent(checkin)}&checkout=${encodeURIComponent(checkout)}&roomCount=${encodeURIComponent(roomCount)}`);
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return await response.json();
-    } catch (error) {
-        console.error('Error fetching room availability:', error);
-        throw error;
-    }
-}
 
 function fetchAvailableRooms(checkin, checkout, adults, childs) {
     // Pass checkin and checkout as query parameters in the fetch request
@@ -128,6 +115,19 @@ function fetchAvailableRooms(checkin, checkout, adults, childs) {
         console.error('Error fetching rooms:', error);
         document.getElementById('room-list').innerHTML = '<p>Failed to load available rooms. Please try again later.</p>';
     });
+}
+// Add the checkRoomAvailability function here
+async function checkRoomAvailability(roomType, checkin, checkout, roomCount) {
+    try {
+        const response = await fetch(`https://lantaajresort.onrender.com/check-room-availability?roomType=${encodeURIComponent(roomType)}&checkin=${encodeURIComponent(checkin)}&checkout=${encodeURIComponent(checkout)}&roomCount=${encodeURIComponent(roomCount)}`);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching room availability:', error);
+        throw error;
+    }
 }
 
 // Open the gallery modal with multiple images

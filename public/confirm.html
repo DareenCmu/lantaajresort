@@ -26,29 +26,41 @@
     <header>
         <div class="container">
             <div class="logo-container">
-                <a href="/public/index.html"><img src="/public/pictures/logo.png" alt="Hotel Logo" class="logo"></a>
+                <a href="/index.html"><img src="/pictures/logo.png" alt="Hotel Logo" class="logo"></a>
                 <div class="vertical-line"></div>
                 <span class="resort-name">Lanta A&J Klong-khong Beach</span>
             </div>
             <nav id="covered">
                 <ul class="main-nav">
-                    <li><a href="/public/rooms.html">Rooms</a></li>
-                    <li><a href="/public/activities.html">Activities</a></li>
-                    <li><a href="/public/menu.html">Restaurant Menu</a></li>
-                    <li><a href="/public/contact.html">Contact Us</a></li>
+                    <li><a href="/rooms.html">Rooms</a></li>
+                    <li><a href="/activities.html">Activities</a></li>
+                    <li><a href="/menu.html">Restuarant Menu</a></li>
+                    <li><a href="/contact.html">Contact Us</a></li>
                 </ul>
+
             </nav>
-            <div class="book-now">
-                <a href="#book-now" class="book-now-btn">Book Now</a>
-            </div>
-            <div class="hamburger-menu" id="hamburgerMenu">
-                <!-- Hamburger Icon -->
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+                <div class="book-now">
+                    <a href="#book-now" class="book-now-btn">Book Now</a>
+                </div>
+                <div class="hamburger-menu" id="hamburgerMenu">
+                    <!-- Hamburger Icon -->
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
         </div>
+     
     </header>
+    <div class="side-menu" id="sideMenu">
+        <button class="close-btn" id="closeBtn">&times;</button>
+        <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/rooms.html">Rooms</a></li>
+            <li><a href="/activities.html">Activities</a></li>
+            <li><a href="/menu.html">Restuarant Menu</a></li>
+            <li><a href="/contact.html">Contact Us</a></li>
+        </ul>
+    </div>
 
     <div class="booking-under-slideshow">
         <form class="booking-form" method="POST" action="submit-booking.php"> <!-- Adding action to handle form submission -->
@@ -177,6 +189,7 @@
                     <h3 class="room_type_name"></h3>
                     <p>CHECK-IN: <span class="checkin-date"></span></p>
                     <p>CHECK-OUT: <span class="checkout-date"></span></p>
+                    <p>Number of room: <span class="room_count"></span> Rooms</p>
                     <p>HOSTING PLAN: <span>Room Only</span></p>
                     <p>OCCUPANCY: <span class="adults"></span></p>
                 </div>

@@ -32,7 +32,7 @@ function fetchAvailableRooms(checkin, checkout, adults, childs) {
             roomList.innerHTML = '<p>No available rooms for the selected dates.</p>';
         } else {
             data.forEach(room => {
-                console.log(`Available Rooms for ${room.room_type} : ${room.available_rooms}`);
+
                 console.log('Room Images:', room.images); // Debugging line
                 const roomCard = document.createElement('div');
                 roomCard.className = 'room-card';
@@ -65,11 +65,12 @@ function fetchAvailableRooms(checkin, checkout, adults, childs) {
                         </ul>
                     </div>
                     <div class="price-section">
-                    <p>Number of Room</p>
-            <label for="room-count-${room.room_type.replace(/\s+/g, '-')}" class="room-count-label">Number of Rooms:</label>
-            <select id="room-count-${room.room_type.replace(/\s+/g, '-')}" class="room-count-select">
-                ${[...Array(Math.min(3, room.available_rooms)).keys()].map(i => `<option value="${i + 1}">${i + 1} Room${i > 0 ? 's' : ''}</option>`).join('')}
-            </select>
+                        <p>Number of Available Rooms</p>
+            
+                        <select id="room-count-${room.room_type.replace(/\s+/g, '-')}" class="room-count-select">
+                            ${[...Array(Math.min(3, room.available_rooms)).keys()].map(i => `<option value="${i + 1}">${i + 1} Room${i > 0 ? 's' : ''}</option>`).join('')}
+                        </select>
+                        
                         <p>1 night, 1 person</p>
                         <p class="price">THB ${room.price}</p>
                         <button class="select-button">Select</button>

@@ -8,6 +8,7 @@ const checkin = urlParams.get('checkin');
 const checkout = urlParams.get('checkout');
 const price = urlParams.get('price');
 const room_type = urlParams.get('room_type');
+const room_count = urlParams.get('roomCount');
 const adults = urlParams.get('adults');
 let childs = urlParams.get('childs');
 
@@ -51,7 +52,9 @@ if (price) {
 if (room_type) {
     document.querySelector('.room_type_name').textContent = room_type;
 }
-
+if(room_count){
+    document.querySelector('.room_count').textContent = room_count;
+}
 // Update the Adults and Children in the booking total section
 if (adults) {
     document.querySelector('.adults').textContent = `${adults} Adults, ${childs} Children`;

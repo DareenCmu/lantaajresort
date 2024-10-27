@@ -83,7 +83,7 @@ function fetchAvailableRooms(checkin, checkout, adults, childs) {
                 selectButton.addEventListener('click', () => {
                     const roomCount = document.getElementById(`room-count-${room.room_type.replace(/\s+/g, '-')}`).value;
                     if (roomCount > room.available_rooms) {
-                        alert('Not enough rooms available.');
+                        alert('Not enough rooms available for the selected dates.');
                     } else {
                         // Redirect to confirm.html with room details as query parameters
                         window.location.href = `confirm.html?room_type=${encodeURIComponent(room.room_type)}&price=${room.price}&checkin=${checkin}&checkout=${checkout}&adults=${adults}&childs=${childs}&room_count=${roomCount}`;

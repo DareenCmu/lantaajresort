@@ -57,23 +57,25 @@ app.get('/available-rooms', (req, res) => {
 app.get('/check-room-availability', (req, res) => {
   const { roomType, checkin, checkout, roomCount } = req.query;
 
+  console.log('Incoming parameters:', { roomType, checkin, checkout, roomCount });
+
   const query = `
-      SELECT rooms.id, rooms.room_number, rooms.room_type
-      FROM rooms
-      LEFT JOIN bookings ON rooms.id = bookings.room_id
-      WHERE rooms.room_type = ?
-        AND rooms.is_available = 1
-        AND (bookings.id IS NULL 
-             OR bookings.check_out <= ? 
-             OR bookings.check_in >= ?)
-      ORDER BY rooms.room_number
-      LIMIT ?;
+    SELECT rooms.id, rooms.room_number, rooms.room_type
+    FROM rooms
+    LEFT JOIN bookings ON rooms.id = bookings.room_id
+    WHERE rooms.room_type = ?
+      AND rooms.is_available = 1
+      AND (bookings.id IS NULL 
+           OR bookings.check_out <= ? 
+           OR bookings.check_in >= ?)
+    ORDER BY rooms.room_number
+    LIMIT ?;
   `;
 
   db.query(query, [roomType, checkin, checkout, roomCount], (error, results) => {
       if (error) {
           console.error('Error executing query:', error);
-          res.status(500).json({ message: 'Error checking availability' });
+          return res.status(500).json({ message: 'Error checking availability', error: error.message });
       } else {
           if (results.length < roomCount) {
               res.json({ available: false, availableRooms: results.length });

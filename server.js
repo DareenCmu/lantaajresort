@@ -73,18 +73,17 @@ app.get('/check-room-availability', (req, res) => {
   `;
 
   db.query(query, [roomType, checkin, checkout, roomCount], (error, results) => {
-
-      if (error) {
-          console.error('Error executing query:', error);
-          return res.status(500).json({ message: 'Error checking availability', error: error.message });
-      } else {
-          if (results.length < roomCount) {
-              res.json({ available: false, availableRooms: results.length });
-          } else {
-              res.json({ available: true, rooms: results });
-          }
-      }
-  });
+    if (error) {
+        console.error('Error executing query:', error.message);
+        res.status(500).json({ message: 'Error checking availability', error: error.message });
+    } else {
+        if (results.length < roomCount) {
+            res.json({ available: false, availableRooms: results.length });
+        } else {
+            res.json({ available: true, rooms: results });
+        }
+    }
+});
 });
 const PORT = 4000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

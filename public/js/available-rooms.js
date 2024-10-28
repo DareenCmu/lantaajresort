@@ -65,12 +65,12 @@ function fetchAvailableRooms(checkin, checkout, adults, childs) {
                         </ul>
                     </div>
                     <div class="price-section">
-                        <p>Number of Available Rooms</p>
+                        <p>Number of Rooms</p>
             
                         <select id="room-count-${room.room_type.replace(/\s+/g, '-')}" class="room-count-select">
-                            ${[...Array(Math.min(3, room.available_rooms)).keys()].map(i => `<option value="${i + 1}">${i + 1} Room${i > 0 ? 's' : ''}</option>`).join('')}
+                            ${[...Array(Math.min(4, room.available_rooms)).keys()].map(i => `<option value="${i + 1}">${i + 1} Room${i > 0 ? 's' : ''}</option>`).join('')}
                         </select>
-                        
+
                         <p>1 night, 1 person</p>
                         <p class="price">THB ${room.price}</p>
                         <button class="select-button">Select</button>

@@ -38,7 +38,9 @@ if (price) {
         currency: 'THB',
         minimumFractionDigits: 2,
     });
-
+    if(room_count >= 2){
+        formattedPrice = formattedPrice * room_count;
+    }
     // Update the price in the booking total section
     document.querySelector('.booking-total strong').textContent = formattedPrice;
 

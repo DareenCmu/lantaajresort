@@ -33,23 +33,28 @@ if (checkin && checkout) {
 
 // Check if price exists and format it accordingly
 if (price) {
-    const formattedPrice = parseFloat(price).toLocaleString('en-US', {
+    let totalPrice = parseFloat(price);
+    
+    if (room_count >= 2) {
+        totalPrice *= room_count;
+    }
+
+    const formattedTotalPrice = totalPrice.toLocaleString('en-US', {
         style: 'currency',
         currency: 'THB',
         minimumFractionDigits: 2,
     });
-    if(room_count >= 2){
-        formattedPrice = formattedPrice * room_count;
-    }
+
     // Update the price in the booking total section
-    document.querySelector('.booking-total strong').textContent = formattedPrice;
+    document.querySelector('.booking-total strong').textContent = formattedTotalPrice;
 
     // Update the label with the pay-now price
     const payNowLabel = document.querySelector('label[for="prepayment"] strong');
     if (payNowLabel) {
-        payNowLabel.textContent = `Pay now: ${formattedPrice}`;
+        payNowLabel.textContent = `Pay now: ${formattedTotalPrice}`;
     }
 }
+
 
 // Update the room_type in the booking total section, if provided
 if (room_type) {

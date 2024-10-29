@@ -45,6 +45,12 @@ function fetchAvailableRooms(checkin, checkout, adults, childs) {
     .then(response => response.json())
     .then(data => {
         console.log('Fetched Data:', data); // Debugging line
+
+        // Update the number of room types
+        document.getElementById('room-types-text').innerHTML = `
+        <i class="fa fa-hotel"></i> 
+        ${data.length} types of rooms available for ${adults} adult${adults > 1 ? 's' : ''}.
+        `;
         const roomList = document.getElementById('room-list');
         // Ensure it picks up the images from the available room
         

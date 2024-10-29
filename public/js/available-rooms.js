@@ -49,7 +49,12 @@ function fetchAvailableRooms(checkin, checkout, adults, childs) {
                 
         // Update the number of room types available in the summary
         document.getElementById('room-types-text').innerHTML = `
-            <i class="fa fa-hotel"></i> ${data.length} types of rooms available for ${adults} adult${adults > 1 ? 's' : ''}.
+            <div class="room-types">
+                <i class="fa fa-building"></i> 2 types of rooms available for ${adults} adults.
+            </div>
+            <div class="booking-dates">
+                <i class="fa fa-calendar"></i> From ${checkin} to ${checkout} <i class="fa fa-moon"></i> ${nights} night${nights > 1 ? 's' : ''}
+            </div>
         `;
         
         roomList.innerHTML = ''; // Clear previous results

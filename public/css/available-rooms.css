@@ -1,28 +1,18 @@
 .availability-summary {
     text-align: center;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    max-width: 80%; /* You can adjust the width as needed */
-    padding: 20px;
+    margin: 20px auto;
+    padding: 10px 0;
 }
 
-.summary-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.room-types {
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
 }
 
-.summary-content p {
-    font-size: 1.1em;
-    color: #333;
-    margin: 0;
-}
-
-.summary-content i {
-    margin-right: 10px;
+.booking-dates {
+    font-size: 1rem;
+    color: #555;
 }
 .price-section .room-count-select {
     padding: 10px; /* Increase padding for a more clickable area */

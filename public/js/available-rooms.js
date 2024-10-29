@@ -2,8 +2,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     let checkin = urlParams.get('checkin');
     let checkout = urlParams.get('checkout');
-    let adults = urlParams.get('adults'); // Get the number of adults from URL
+    let adults = urlParams.get('adults')|| 2; // Get the number of adults from URL
     let childs = urlParams.get('childs'); // Get the number of children from URL
+    let roomCount = urlParams.get('room_count') || 1; // Default to 1 room if not provided
 
     // Set default dates if they are not provided in the query string
     const today = new Date().toISOString().split('T')[0];
@@ -14,6 +15,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('checkin').value = checkin;
     document.getElementById('checkout').value = checkout;
+
+        // Calculate the number of nights between check-in and check-out
+        const checkinDate = new Date(checkin);
+        const checkoutDate = new Date(checkout);
+        const numberOfNights = Math.ceil((checkoutDate - checkinDate) / (1000 * 60 * 60 * 24));
+    
+        // Populate the availability summary section
+        const availabilitySummary = document.getElementById('availability-summary');
+        availabilitySummary.innerHTML = `
+            <div class="summary-content">
+                <p>
+                    <i class="fa fa-hotel"></i> 
+                    <span id="room-types-count">Loading room types...</span> types of rooms available for ${adults} adult${adults > 1 ? 's' : ''}.
+                </p>
+                <p>
+                    <i class="fa fa-calendar-alt"></i> From ${checkin} to ${checkout} 
+                    <i class="fa fa-moon"></i> ${numberOfNights} night${numberOfNights > 1 ? 's' : ''}
+                </p>
+            </div>
+        `;
 
     fetchAvailableRooms(checkin, checkout, adults, childs);
 });

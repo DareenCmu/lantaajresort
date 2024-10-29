@@ -15,26 +15,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('checkin').value = checkin;
     document.getElementById('checkout').value = checkout;
+    // Calculate the number of nights between check-in and check-out
+    const checkinDate = new Date(checkin);
+    const checkoutDate = new Date(checkout);
+    const numberOfNights = Math.ceil((checkoutDate - checkinDate) / (1000 * 60 * 60 * 24));
 
-        // Calculate the number of nights between check-in and check-out
-        const checkinDate = new Date(checkin);
-        const checkoutDate = new Date(checkout);
-        const numberOfNights = Math.ceil((checkoutDate - checkinDate) / (1000 * 60 * 60 * 24));
+    // Populate the availability summary section
+    const availabilitySummary = document.getElementById('availability-summary');
+    availabilitySummary.innerHTML = `
+        <div class="summary-content">
+            <p id="room-types-text">
+                <i class="fa fa-hotel"></i> Loading room types... available for ${adults} adult${adults > 1 ? 's' : ''}.
+            </p>
+            <p>
+                <i class="fa fa-calendar-alt"></i> From ${checkin} to ${checkout} 
+                <i class="fa fa-moon"></i> ${numberOfNights} night${numberOfNights > 1 ? 's' : ''}
+            </p>
+        </div>
+    `;
     
-        // Populate the availability summary section
-        const availabilitySummary = document.getElementById('availability-summary');
-        availabilitySummary.innerHTML = `
-            <div class="summary-content">
-                <p>
-                    <i class="fa fa-hotel"></i> 
-                    <span id="room-types-count">Loading room types...</span> types of rooms available for ${adults} adult${adults > 1 ? 's' : ''}.
-                </p>
-                <p>
-                    <i class="fa fa-calendar-alt"></i> From ${checkin} to ${checkout} 
-                    <i class="fa fa-moon"></i> ${numberOfNights} night${numberOfNights > 1 ? 's' : ''}
-                </p>
-            </div>
-        `;
 
     fetchAvailableRooms(checkin, checkout, adults, childs);
 });
@@ -45,14 +44,13 @@ function fetchAvailableRooms(checkin, checkout, adults, childs) {
     .then(response => response.json())
     .then(data => {
         console.log('Fetched Data:', data); // Debugging line
-
-        // Update the number of room types
-        document.getElementById('room-types-text').innerHTML = `
-        <i class="fa fa-hotel"></i> 
-        ${data.length} types of rooms available for ${adults} adult${adults > 1 ? 's' : ''}.
-        `;
         const roomList = document.getElementById('room-list');
         // Ensure it picks up the images from the available room
+                
+        // Update the number of room types available in the summary
+        document.getElementById('room-types-text').innerHTML = `
+            <i class="fa fa-hotel"></i> ${data.length} types of rooms available for ${adults} adult${adults > 1 ? 's' : ''}.
+        `;
         
         roomList.innerHTML = ''; // Clear previous results
         if (data.length === 0) {

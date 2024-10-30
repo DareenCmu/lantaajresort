@@ -94,6 +94,8 @@ if (price) {
 // Update the room_type in the booking total section, if provided
 if (room_type) {
     document.querySelector('.room_type_name').textContent = room_type;
+    document.querySelector('#room_type').value = room_type;
+
 }
 if (room_count) {
     console.log('Room Count:', room_count);

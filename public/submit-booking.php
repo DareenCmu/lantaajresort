@@ -29,6 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo "Comments: $comments<br>";
     echo "Payment Method: $payment_method<br>";
     echo "Total Price: $total_price<br>";
+    echo "room_count: $room_count<br>";
+    echo "nights: $nights<br>";
 
     // Ensure all required fields are filled
     if (empty($first_name) || empty($surname) || empty($email)) {

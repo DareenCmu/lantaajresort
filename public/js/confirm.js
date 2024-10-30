@@ -36,15 +36,30 @@ if (checkin && checkout) {
 if (price) {
     let totalPrice = parseFloat(price);
     
-    if (room_count >= 2) {
-        totalPrice =totalPrice *  room_count * nights;
+     // Multiply by room count and nights
+     if (room_count >= 2) {
+        totalPrice = totalPrice * room_count;
     }
 
-    const formattedTotalPrice = totalPrice.toLocaleString('en-US', {
+    if (checkin && checkout) {
+        // Calculate the number of nights
+        const checkinDate = new Date(checkin);
+        const checkoutDate = new Date(checkout);
+        const timeDifference = checkoutDate - checkinDate;
+        const nights = timeDifference / (1000 * 3600 * 24);
+        totalPrice = totalPrice * nights;
+    }
+
+    // Format total price with two decimal places
+    const formattedTotalPrice = totalPrice.toFixed(2);
+
+    // Update the price in the booking total section
+    const formattedCurrencyPrice = parseFloat(formattedTotalPrice).toLocaleString('en-US', {
         style: 'currency',
         currency: 'THB',
         minimumFractionDigits: 2,
     });
+
 
     // Update the price in the booking total section
     document.querySelector('.booking-total strong').textContent = formattedTotalPrice;
@@ -56,10 +71,11 @@ if (price) {
     }
     console.log(`TOTSL PRICE: ${formattedTotalPrice}`)
 
+    // Update the total price input for form submission
     const totalPriceInput = document.querySelector('input[name="total_price"]');
-        if (totalPriceInput) {
-            totalPriceInput.value = formattedTotalPrice.toFixed(2);
-        }
+    if (totalPriceInput) {
+        totalPriceInput.value = formattedTotalPrice;
+    }
 
 }
 

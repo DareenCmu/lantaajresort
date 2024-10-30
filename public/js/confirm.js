@@ -63,7 +63,7 @@ if (price) {
         }
 
         // Format total price with two decimal places and commas
-        const formattedCurrencyPrice = totalPrice.toLocaleString('en-US', {
+        const formattedTotalPrice = totalPrice.toLocaleString('en-US', {
             style: 'currency',
             currency: 'THB',
             minimumFractionDigits: 2,
@@ -74,7 +74,7 @@ if (price) {
         if (totalPriceInput) {
             totalPriceInput.value = totalPrice.toFixed(2);
         }
-        
+
     // Update the price in the booking total section
     document.querySelector('.booking-total strong').textContent = formattedTotalPrice;
 

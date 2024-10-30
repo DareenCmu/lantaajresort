@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Prepare and execute the query
     if ($stmt = $conn->prepare($sql)) {
-        $stmt->bind_param("ssssssssdii", $first_name, $surname, $email, $phone, $country, $visited_before, $comments, $payment_method, $total_price, $room_count, $nights, $room_type);
+        $stmt->bind_param("sssssssddis", $first_name, $surname, $email, $phone, $country, $visited_before, $comments, $payment_method, $total_price, $room_count, $nights, $room_type);
         if ($stmt->execute()) {
             echo "Booking successful!";
         } else {

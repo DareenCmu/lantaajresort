@@ -86,7 +86,7 @@ if (price) {
     console.log(`TOTSL PRICE: ${formattedTotalPrice}`)
 
     // Update the cancellation text with the dynamic values
-    if (totalPrice && checkin) {
+    if (price && checkin) {
         document.querySelector('.cancellation-text').textContent = `From ${formattedCheckinDate} at ${formattedTime}: the penalty for cancellation will be THB ${formattedTotalPrice}`;
     }
 

@@ -15,6 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $comments = htmlspecialchars(trim($_POST['comments']));
     $payment_method = htmlspecialchars(trim($_POST['payment_method']));
     $total_price = isset($_POST['total_price']) ? floatval($_POST['total_price']) : 0;
+    $room_count = isset($_POST['room_count']) ? $_POST['room_count'] : 1;
+    $nights = isset($_POST['nights']) ? $_POST['nights'] : 1;
 
     // Debug: Display collected form data
     echo "<h2>Collected Form Data for Debugging</h2>";
@@ -39,16 +41,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         echo "Connection is closed.<br>";
     }
-    // Prepare the SQL query
-    $sql = "INSERT INTO guestbooking (first_name, surname, email, phone, country, visited_before, comments, payment_method, total_price)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+    // Add $room_count and $nights to your SQL query
+    $sql = "INSERT INTO guestbooking (first_name, surname, email, phone, country, visited_before, comments, payment_method, total_price, room_count, nights)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     // Debug: Display SQL query for verification
     echo "SQL Query: $sql<br>";
 
     // Prepare and execute the query
     if ($stmt = $conn->prepare($sql)) {
-        $stmt->bind_param("ssssssssd", $first_name, $surname, $email, $phone, $country, $visited_before, $comments, $payment_method, $total_price);
+        $stmt->bind_param("ssssssssdii", $first_name, $surname, $email, $phone, $country, $visited_before, $comments, $payment_method, $total_price, $room_count, $nights);
         if ($stmt->execute()) {
             echo "Booking successful!";
         } else {

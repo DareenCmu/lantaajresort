@@ -41,6 +41,9 @@ if (price) {
         totalPrice = totalPrice * room_count;
     }
 
+
+
+
     if (checkin && checkout) {
         // Calculate the number of nights
         const checkinDate = new Date(checkin);
@@ -49,7 +52,15 @@ if (price) {
         const nights = timeDifference / (1000 * 3600 * 24);
         totalPrice = totalPrice * nights;
     }
+        // Set room count and nights values
+        const roomCountInput = document.getElementById('room_count_input');
+        const nightsInput = document.getElementById('nights_input');
 
+        // Update the values dynamically
+        if (room_count && nights) {
+            roomCountInput.value = room_count;
+            nightsInput.value = nights;
+        }
     // Format total price with two decimal places
     const formattedTotalPrice = totalPrice.toFixed(2);
 

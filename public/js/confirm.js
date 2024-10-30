@@ -118,5 +118,5 @@ const formattedTime = currentTime.toLocaleString('en-US', {
 
 // Update the cancellation text with the dynamic values
 if (price && checkin) {
-    document.querySelector('.cancellation-text').textContent = `From ${formattedCheckinDate} at ${formattedTime}: the penalty for cancellation will be THB ${price}`;
+    document.querySelector('.cancellation-text').textContent = `From ${formattedCheckinDate} at ${formattedTime}: the penalty for cancellation will be THB ${formattedTotalPrice}`;
 }

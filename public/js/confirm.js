@@ -85,11 +85,21 @@ if (price) {
     }
     console.log(`TOTSL PRICE: ${formattedTotalPrice}`)
 
+    // Get current date and time, plus one hour for the penalty time
+    const currentTime = new Date();
+    currentTime.setHours(currentTime.getHours() + 1);
+
+    // Format the date and time (e.g., MM/DD/YYYY at HH:MM)
+    const formattedTime = currentTime.toLocaleString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+    });
+
     // Update the cancellation text with the dynamic values
     if (price && checkin) {
         document.querySelector('.cancellation-text').textContent = `From ${formattedCheckinDate} at ${formattedTime}: the penalty for cancellation will be THB ${formattedTotalPrice}`;
     }
-
 
 }
 
@@ -109,14 +119,4 @@ if (adults) {
     document.querySelector('.adults').textContent = `${adults} Adults, ${childs} Children`;
 }
 
-// Get current date and time, plus one hour for the penalty time
-const currentTime = new Date();
-currentTime.setHours(currentTime.getHours() + 1);
-
-// Format the date and time (e.g., MM/DD/YYYY at HH:MM)
-const formattedTime = currentTime.toLocaleString('en-US', {
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false
-});
 

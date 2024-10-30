@@ -11,9 +11,11 @@
 }
 
 .booking-dates {
-    font-size: 1rem;
+    font-size: 1.5rem;
     color: #555;
 }
+
+
 .price-section .room-count-select {
     padding: 10px; /* Increase padding for a more clickable area */
     font-size: 1rem;

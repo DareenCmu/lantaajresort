@@ -25,11 +25,11 @@ document.addEventListener('DOMContentLoaded', function() {
     availabilitySummary.innerHTML = `
         <div class="summary-content">
             <p id="room-types-text">
-                <i class="fa fa-hotel"></i> Loading room types... available at Lanta A&J Resort for ${adults} adult${adults > 1 ? 's' : ''}.
+                <i class="fa fa-hotel"></i> Loading room types... available at <strong>Lanta A&J Resort</strong> for <strong>${adults} adult${adults > 1 ? 's' : ''}</strong>.
             </p>
             <p>
-                <i class="fa fa-calendar-alt"></i> From ${checkin} to ${checkout} 
-                <i class="fa fa-moon"></i> ${numberOfNights} night${numberOfNights > 1 ? 's' : ''}
+                <i class="fa fa-calendar-alt"></i> From <strong>${checkin}</strong> to <strong>${checkout}</strong>
+                <i class="fa fa-moon"></i> <strong>${numberOfNights} night${numberOfNights > 1 ? 's' : ''}</strong>
             </p>
         </div>
     `;
@@ -49,7 +49,7 @@ function fetchAvailableRooms(checkin, checkout, adults, childs,numberOfNights) {
                 
         // Update the number of room types available in the summary
         document.getElementById('room-types-text').innerHTML = `
-            <i class="fa fa-hotel"></i> ${data.length} types of rooms available at Lanta A&J Resort for ${adults} adult${adults > 1 ? 's' : ''}.
+            <i class="fa fa-hotel"></i> ${data.length} types of rooms available at <strong>Lanta A&J Resort</strong> for <strong>${adults} adult${adults > 1 ? 's' : ''}</strong>.
         `;
         roomList.innerHTML = ''; // Clear previous results
         if (data.length === 0) {

@@ -65,7 +65,7 @@ function fetchAvailableRooms(checkin, checkout, adults, childs,numberOfNights) {
                     currency: 'THB',
                     minimumFractionDigits: 2,
                 });
-                formattedCurrencyPrice
+                console.log(formattedCurrencyPrice);
                 roomCard.className = 'room-card';
                 // Use the first image as the main image on the room card
                 const imageUrls = Array.isArray(room.images) ? room.images : [];

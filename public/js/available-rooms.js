@@ -102,7 +102,7 @@ function fetchAvailableRooms(checkin, checkout, adults, childs,numberOfNights) {
                         </select>
 
                         <p>1 night, 1 person</p>
-                        <p class="price">THB ${formattedCurrencyPrice}</p>
+                        <p class="price">${formattedCurrencyPrice}</p>
                         <button class="select-button">Select</button>
                     </div>
                 </div>

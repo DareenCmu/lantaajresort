@@ -35,10 +35,10 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     
 
-    fetchAvailableRooms(checkin, checkout, adults, childs);
+    fetchAvailableRooms(checkin, checkout, adults, childs,numberOfNights);
 });
 
-function fetchAvailableRooms(checkin, checkout, adults, childs) {
+function fetchAvailableRooms(checkin, checkout, adults, childs,numberOfNights) {
     // Pass checkin and checkout as query parameters in the fetch request
     fetch(`https://lantaajresort.onrender.com/available-rooms?checkin=${checkin}&checkout=${checkout}&adults=${adults}&childs=${childs}`)
     .then(response => response.json())
@@ -53,7 +53,7 @@ function fetchAvailableRooms(checkin, checkout, adults, childs) {
                 <i class="fa fa-building"></i> 2 types of rooms available for ${adults} adults.
             </div>
             <div class="booking-dates">
-                <i class="fa fa-calendar"></i> From ${checkin} to ${checkout} <i class="fa fa-moon"></i> ${nights} night${nights > 1 ? 's' : ''}
+                <i class="fa fa-calendar"></i> From ${checkin} to ${checkout} <i class="fa fa-moon"></i> ${numberOfNights} night${numberOfNights > 1 ? 's' : ''}
             </div>
         `;
         

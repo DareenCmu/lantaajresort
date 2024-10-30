@@ -14,5 +14,5 @@ if ($conn->connect_error) {
     echo "Successfully connected to the database!";
 }
 
-$conn->close();
+
 ?>

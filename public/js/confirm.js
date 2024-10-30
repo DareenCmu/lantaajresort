@@ -55,7 +55,7 @@ if (price) {
     }
     const totalPriceInput = document.querySelector('input[name="total_price"]');
     if (totalPriceInput) {
-    totalPriceInput.value = totalPrice.toFixed(2);
+    totalPriceInput.value = formattedTotalPrice.toFixed(2);
 }
 }
 

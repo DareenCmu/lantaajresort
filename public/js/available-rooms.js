@@ -59,6 +59,13 @@ function fetchAvailableRooms(checkin, checkout, adults, childs,numberOfNights) {
 
                 console.log('Room Images:', room.images); // Debugging line
                 const roomCard = document.createElement('div');
+                // Format total price as currency with commas and set it in the relevant places
+                const formattedCurrencyPrice = parseFloat(room.price).toLocaleString('en-US', {
+                    style: 'currency',
+                    currency: 'THB',
+                    minimumFractionDigits: 2,
+                });
+                formattedCurrencyPrice
                 roomCard.className = 'room-card';
                 // Use the first image as the main image on the room card
                 const imageUrls = Array.isArray(room.images) ? room.images : [];

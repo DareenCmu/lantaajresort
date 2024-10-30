@@ -9,6 +9,7 @@ const checkout = urlParams.get('checkout');
 const price = urlParams.get('price');
 const room_type = urlParams.get('room_type');
 const room_count = urlParams.get('room_count');
+const nights = urlParams.get('nights');
 
 const adults = urlParams.get('adults');
 let childs = urlParams.get('childs');
@@ -36,7 +37,7 @@ if (price) {
     let totalPrice = parseFloat(price);
     
     if (room_count >= 2) {
-        totalPrice =totalPrice *  room_count * night;
+        totalPrice =totalPrice *  room_count * nights;
     }
 
     const formattedTotalPrice = totalPrice.toLocaleString('en-US', {

@@ -117,7 +117,7 @@ function fetchAvailableRooms(checkin, checkout, adults, childs,numberOfNights) {
                         .then(response => {
                             if (response.available) {
                                 // Redirect to confirm.html with room details as query parameters
-                                window.location.href = `confirm.html?room_type=${encodeURIComponent(room.room_type)}&price=${room.price}&checkin=${checkin}&checkout=${checkout}&adults=${adults}&childs=${childs}&room_count=${roomCount}`;
+                                window.location.href = `confirm.html?room_type=${encodeURIComponent(room.room_type)}&price=${room.price}&checkin=${checkin}&checkout=${checkout}&adults=${adults}&childs=${childs}&room_count=${roomCount}&nights=${numberOfNights}`;
                             } else {
                                 alert(`Not enough rooms available. Only ${response.availableRooms} rooms are available.`);
                             }

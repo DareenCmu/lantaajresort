@@ -61,17 +61,20 @@ if (price) {
             roomCountInput.value = room_count;
             nightsInput.value = nights;
         }
-    // Format total price with two decimal places
-    const formattedTotalPrice = totalPrice.toFixed(2);
 
-    // Update the price in the booking total section
-    const formattedCurrencyPrice = parseFloat(formattedTotalPrice).toLocaleString('en-US', {
-        style: 'currency',
-        currency: 'THB',
-        minimumFractionDigits: 2,
-    });
+        // Format total price with two decimal places and commas
+        const formattedCurrencyPrice = totalPrice.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'THB',
+            minimumFractionDigits: 2,
+        });
 
-
+        // Update the total price input for form submission
+        const totalPriceInput = document.querySelector('input[name="total_price"]');
+        if (totalPriceInput) {
+            totalPriceInput.value = totalPrice.toFixed(2);
+        }
+        
     // Update the price in the booking total section
     document.querySelector('.booking-total strong').textContent = formattedTotalPrice;
 
@@ -82,11 +85,7 @@ if (price) {
     }
     console.log(`TOTSL PRICE: ${formattedTotalPrice}`)
 
-    // Update the total price input for form submission
-    const totalPriceInput = document.querySelector('input[name="total_price"]');
-    if (totalPriceInput) {
-        totalPriceInput.value = formattedTotalPrice;
-    }
+
 
 }
 

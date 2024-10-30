@@ -47,7 +47,10 @@ function fetchAvailableRooms(checkin, checkout, adults, childs,numberOfNights) {
         const roomList = document.getElementById('room-list');
         // Ensure it picks up the images from the available room
                 
-        
+        // Update the number of room types available in the summary
+        document.getElementById('room-types-text').innerHTML = `
+            <i class="fa fa-hotel"></i> ${data.length} types of rooms available for ${adults} adult${adults > 1 ? 's' : ''}.
+        `;
         roomList.innerHTML = ''; // Clear previous results
         if (data.length === 0) {
             roomList.innerHTML = '<p>No available rooms for the selected dates.</p>';

@@ -85,6 +85,10 @@ if (price) {
     }
     console.log(`TOTSL PRICE: ${formattedTotalPrice}`)
 
+    // Update the cancellation text with the dynamic values
+    if (totalPrice && checkin) {
+        document.querySelector('.cancellation-text').textContent = `From ${formattedCheckinDate} at ${formattedTime}: the penalty for cancellation will be THB ${formattedTotalPrice}`;
+    }
 
 
 }
@@ -115,13 +119,4 @@ const formattedTime = currentTime.toLocaleString('en-US', {
     minute: '2-digit',
     hour12: false
 });
-// Format total price with two decimal places and commas
-const formattedTotalPrice = totalPrice.toLocaleString('en-US', {
-    style: 'currency',
-    currency: 'THB',
-    minimumFractionDigits: 2,
-});
-// Update the cancellation text with the dynamic values
-if (price && checkin) {
-    document.querySelector('.cancellation-text').textContent = `From ${formattedCheckinDate} at ${formattedTime}: the penalty for cancellation will be THB ${formattedTotalPrice}`;
-}
+

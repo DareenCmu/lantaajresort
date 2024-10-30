@@ -44,15 +44,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         echo "Connection is closed.<br>";
     }
+
+    date_default_timezone_set('Asia/Bangkok'); // Set default timezone to Bangkok
+
+    // Collect the booking date using the local time
+    $booking_date = date('Y-m-d H:i:s');
+
     // Add $room_count and $nights to your SQL query
-    $sql = "INSERT INTO guestbooking (first_name, surname, email, phone, country, visited_before, comments, payment_method, total_price, room_count, nights, room_type)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO guestbooking (first_name, surname, email, phone, country, visited_before, comments, payment_method, total_price, room_count, nights, room_type, booking_date)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     // Debug: Display SQL query for verification
     echo "SQL Query: $sql<br>";
 
     // Prepare and execute the query
     if ($stmt = $conn->prepare($sql)) {
-        $stmt->bind_param("ssssssssdiis", $first_name, $surname, $email, $phone, $country, $visited_before, $comments, $payment_method, $total_price, $room_count, $nights, $room_type);
+        $stmt->bind_param("ssssssssdiiss", $first_name, $surname, $email, $phone, $country, $visited_before, $comments, $payment_method, $total_price, $room_count, $nights, $room_type, $booking_date);
         if ($stmt->execute()) {
             echo "Booking successful!";
         } else {

@@ -1,18 +1,20 @@
 <?php
 // Include the database connection file
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 include 'db_connect.php';  // Your database connection file
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Collect form data from POST request
-    $first_name = $_POST['first_name'];
-    $surname = $_POST['surname'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $country = $_POST['country'];
-    $visited_before = $_POST['visited_before'];
-    $comments = $_POST['comments'];
-    $payment_method = $_POST['payment_method'];
-    $total_price = isset($_POST['total_price']) ? $_POST['total_price'] : 0;  // Default to 0 if not set
+    // Collect and sanitize form data from POST request
+    $first_name = htmlspecialchars(trim($_POST['first_name']));
+    $surname = htmlspecialchars(trim($_POST['surname']));
+    $email = htmlspecialchars(trim($_POST['email']));
+    $phone = htmlspecialchars(trim($_POST['phone']));
+    $country = htmlspecialchars(trim($_POST['country']));
+    $visited_before = htmlspecialchars(trim($_POST['visited_before']));
+    $comments = htmlspecialchars(trim($_POST['comments']));
+    $payment_method = htmlspecialchars(trim($_POST['payment_method']));
+    $total_price = isset($_POST['total_price']) ? floatval($_POST['total_price']) : 0;
 
     // Debug: Display collected form data
     echo "<h2>Collected Form Data for Debugging</h2>";
@@ -25,19 +27,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo "Comments: $comments<br>";
     echo "Payment Method: $payment_method<br>";
     echo "Total Price: $total_price<br>";
+
+    // Ensure all required fields are filled
+    if (empty($first_name) || empty($surname) || empty($email)) {
+        echo "Error: Missing required form fields.<br>";
+        exit;
+    }
     // Check if the connection is still alive
     if ($conn->ping()) {
         echo "Connection is still alive.<br>";
     } else {
         echo "Connection is closed.<br>";
     }
-
-    // Ensure all fields are collected correctly
-    if (empty($first_name) || empty($surname) || empty($email)) {
-        echo "Error: Missing required form fields.<br>";
-        exit;
-    }
-
     // Prepare the SQL query
     $sql = "INSERT INTO guestbooking (first_name, surname, email, phone, country, visited_before, comments, payment_method, total_price)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -58,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "SQL Preparation Error: " . $conn->error . "<br>";
     }
 
-    // Close the connection at the very end
+    // Close the connection
     $conn->close();
 }
 ?>

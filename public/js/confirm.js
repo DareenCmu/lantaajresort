@@ -36,7 +36,7 @@ if (price) {
     let totalPrice = parseFloat(price);
     
     if (room_count >= 2) {
-        totalPrice *= room_count;
+        totalPrice =totalPrice*  room_count * night;
     }
 
     const formattedTotalPrice = totalPrice.toLocaleString('en-US', {
@@ -53,6 +53,10 @@ if (price) {
     if (payNowLabel) {
         payNowLabel.textContent = `Pay now: ${formattedTotalPrice}`;
     }
+    const totalPriceInput = document.querySelector('input[name="total_price"]');
+    if (totalPriceInput) {
+    totalPriceInput.value = totalPrice.toFixed(2);
+}
 }
 
 
